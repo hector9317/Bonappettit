@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Sistema Recomendador de Comidas</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/scrolling-nav.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">Sistema Recomendador de Comida</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    
+                   <li>
+                        <a class="page-scroll" href="./index.html">Menu Principal</a>
+                    </li>
+                    <li class="dropdown">
+                          <a href="about.html" class="dropdown-toggle" data-toggle="dropdown">Platillo<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./form_add_dishes.html">Agregrar Un Platillo</a></li>
+                                  
+                            </ul>
+
+                        </li>
+                    <li class="dropdown">
+                          <a href="about.html" class="dropdown-toggle" data-toggle="dropdown">Recomendaciones <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./searcher_for_dishes.html">Platillo</a></li>
+                                  <li class="divider"></li>
+                                  <li><a href="./test.html">Categoria</a></li>
+                                  
+                            </ul>
+
+                        </li>
+                </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                 <!-- Intro Section -->
+        <section id="intro" class="intro-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="panel-group" id="accordion">
+                                    <div class="panel panel-default" id="panel1">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-target="#collapseOne" 
+                                                   href="#collapseOne" class="collapsed">
+                                                    Tipo
+                                                </a>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse ">
+                                            <div class="panel-body">
+                                                <div class="form">
+                                                   
+                                                    <label class="radio">
+                                                        <input value="1" type="checkbox">   Panes y masas
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="2" type="checkbox">   Pastas
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="3" type="checkbox">   Bizcochos y galletas
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="4" type="checkbox">   Carnes
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="5" type="checkbox">   Aves
+                                                    </label>
+                                               
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default" id="panel2">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-target="#collapseTwo" 
+                                                   href="#collapseTwo" class="collapsed">
+                                                    Sabor
+                                                </a>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="form">
+                                                   
+                                                    <label class="radio">
+                                                        <input value="1" type="checkbox">   Dulce  
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="2" type="checkbox">   Salado
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="3" type="checkbox">   Agrio
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="4" type="checkbox">   Amargo
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="5" type="checkbox">   Umami
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default" id="panel3">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-target="#collapseThree"
+                                                   href="#collapseThree" class="collapsed">
+                                                    Ocasion
+                                                </a>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                    <div class="form">
+                                                   
+                                                    <label class="radio">
+                                                        <input value="1" type="checkbox">   Hallowen  
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="2" type="checkbox">    Navidad
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="3" type="checkbox">   San Valentin
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="4" type="checkbox">   Primavera
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="5" type="checkbox">   Verano
+                                                    </label>
+                                               
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default" id="panel4">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-target="#collapseFour"
+                                                   href="#collapseFour" class="collapsed">
+                                                    Region
+                                                </a>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseFour" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                    <div class="form">
+                                                   
+                                                    <label class="radio">
+                                                        <input value="1" type="checkbox">   Italiana  
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="2" type="checkbox">   Mediterranea
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="3" type="checkbox">   Asiatica
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="4" type="checkbox">   Mexicana
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="5" type="checkbox">   Americana
+                                                    </label>
+                                                        <div style="position: relative;text-align: center">
+                                                            <label class="radio">
+                                                        <input value="5" type="checkbox">   Americana
+                                                    </label>
+                                                            <label class="radio">
+                                                                <input value="5" type="checkbox" style="position: relative">   Americana
+                                                    </label>
+                                                        </div>
+                                                        
+                                                       
+                                                    </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default" id="panel5">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-target="#collapseFive"
+                                                   href="#collapseFive" class="collapsed">
+                                                    Salud
+                                                </a>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseFive" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                    <label class="radio">
+                                                        <input value="1" type="checkbox">   Bajas En Colesterol  
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="2" type="checkbox">   Sin Lactosa
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="3" type="checkbox">   Celiacos
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="4" type="checkbox">   Bajar De peso
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="5" type="checkbox">   Vegetarianos                                                    </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default" id="panel6">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-target="#collapseSix"
+                                                   href="#collapseSix" class="collapsed">
+                                                   Temperatura
+                                                </a>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseSix" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                
+                                                    <div class="form">
+                                                    <label class="radio">
+                                                        <input value="1" type="checkbox">   Frio  
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="2" type="checkbox">   Templado
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="3" type="checkbox">   Caliente
+                                                    </label>
+                                               
+                                                   
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="panel panel-default" id="panel7">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-target="#collapseSeven"
+                                                   href="#collapseSeven" class="collapsed">
+                                                    Tipo De Persona
+                                                </a>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseSeven" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                               
+                                                <div class="form">
+                                                   
+                                                    <label class="radio">
+                                                        <input value="1" type="checkbox">   Bebes
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="2" type="checkbox">   Niños
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="3" type="checkbox">   Adultos
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="4" type="checkbox">   Familiares
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="5" type="checkbox">   Adultos Mayores
+                                                    </label>
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default" id="panel8">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-target="#collapseEigth"
+                                                   href="#collapseEigth" class="collapsed">
+                                                    Textura
+                                                </a>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseEigth" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                
+                                                <div class="form">
+                                                   
+                                                    <label class="radio">
+                                                        <input value="1" type="checkbox">   Liquidas  
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="2" type="checkbox">   Blandas
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="3" type="checkbox">   Semi-Blandas
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="4" type="checkbox">   Duras
+                                                    </label>
+
+                                                    <label class="radio">
+                                                        <input value="5" type="checkbox">   Crujientes
+                                                    </label>
+                                               
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                </div>
+                        <br>
+                        <br>
+                        <br>
+                        <input type="submit" name="submit" id="submit" value="Agregar" class="btn btn-info pull-right">
+                    </div>
+                </div>
+            </div>
+        </section>
+            </div>
+        </div>
+
+
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Scrolling Nav JavaScript -->
+        <script src="js/jquery.easing.min.js"></script>
+        <script src="js/scrolling-nav.js"></script>
+
+    </body>
+
+</html>
