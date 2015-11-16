@@ -29,4 +29,9 @@
 	<bean id="counterDAO" class="com.example.dao.counter.CounterDAOImpl">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"></property>
 	</bean>
+	
+	<bean id="dishDAO" class="com.example.dao.dish.DishDAOImpl" />
+	
+	<bean id="categoryDAO" class="com.example.dao.category.CategoryDAOImpl" />
+	
 </beans>
