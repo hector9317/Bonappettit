@@ -1,3 +1,4 @@
+<%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
 <%@page import="com.example.dao.category.CategoryDAOImpl"%>
 <%@page import="com.example.dao.dish.DishDAOImpl"%>
 <%@page import="java.util.ArrayList"%>
@@ -8,8 +9,8 @@
 <%@page import="com.example.domain.Dish"%>
 
 <%
-	DishDAOImpl ddi = new DishDAOImpl();
-	CategoryDAOImpl cdi = new CategoryDAOImpl();
+	DishDAOImpl ddi = (DishDAOImpl) new ClassPathXmlApplicationContext("config.xml").getBean("dishDAO");
+	CategoryDAOImpl cdi = (CategoryDAOImpl) new ClassPathXmlApplicationContext("config.xml").getBean("categoryDAO");
 
 	String[][] categories = new String[8][];
 	String[] types = {"kind", "flavour", "occasion", "region", "health", "temperature", "people", "texture"};
@@ -25,29 +26,29 @@
 	categories[5] = request.getParameterValues("Temperature");
 	categories[6] = request.getParameterValues("Persona");
 	categories[7] = request.getParameterValues("Textura");
-
-	out.println(name);
-	out.println(ingredients);
 	
 	Dish dish = new Dish();
 	dish.setName(name);
 	dish.setIngredients(ingredients);
-	
 	Category category = null;
 	
 	for(int i = 0; i < categories.length; i++) {
-		System.out.println("i: " + i);
 		if(categories[i] != null) {
+			System.out.println("i: " + i);
 			//for(int j = 0; j < categories[i][j].length(); j++) {
-			for(String s : categories[i]) {
-				System.out.println("ij: " + s);
-				System.out.println("ij length: " + s.length());
+			for(String c : categories[i]) {
+				System.out.println("category: " + c);
 				category = new Category();
 				category.setType(types[i]);
-				category.setName(s);
-		    	cdi.create(category);
-				System.out.println(category.toString());
-				dish.hasCategory(category);
+				category.setName(c);
+				
+				if(!cdi.exists(category)) {
+			    	cdi.create(category);
+				} else {
+					category = cdi.findByName(c);
+					System.out.println("----> " + category.toString());
+				}
+				dish.addCategories(category);
 			}
 		}
 	}

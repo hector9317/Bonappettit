@@ -10,4 +10,6 @@ public interface DishDAO {
 	public void update(Dish dish);
 	public void delete(Dish dish);
 	public LinkedList<Dish> retrieveAll();
+	public Dish findByName(String name);
+	public boolean exists(Dish dish);
 }
