@@ -10,4 +10,6 @@ public interface CategoryDAO {
 	public void update(Category category);
 	public void delete(Category category);
 	public LinkedList<Category> retrieveAll();
+	public Category findByName(String name);
+	public boolean exists(Category category);	
 }
