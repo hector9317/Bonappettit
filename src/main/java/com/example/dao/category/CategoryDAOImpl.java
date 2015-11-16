@@ -19,12 +19,10 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public void create(Category category) {
 		CounterDAOImpl cdi = null;
 		cdi = (CounterDAOImpl) new ClassPathXmlApplicationContext("config.xml").getBean("counterDAO");
-		if(!exists(category)) {
-			Counter counter = cdi.retrieve();
-			category.setCategoryID(counter.getTotal());
-			session.save(category);
-			cdi.update();			
-		}
+		Counter counter = cdi.retrieve();
+		category.setCategoryID(counter.getTotal());
+		session.save(category);
+		cdi.update();			
 	}
 
 	public Category retrieve(long id) {
@@ -48,7 +46,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 	
 	public Category findByName(String name) {
-		Category category = session.queryForObject(Category.class, "match (category:Category {name: {name}}) return category", MapUtil.map("name",name));
+		Category category = (Category) session.queryForObject(Category.class, "match (category:Category {name: {name}}) return category", MapUtil.map("name",name));
 		return category;
 	}
 	

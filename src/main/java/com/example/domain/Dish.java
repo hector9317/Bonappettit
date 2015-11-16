@@ -78,14 +78,16 @@ public class Dish {
     }
 
     public void addCategories(Category category) {
-        if(categories == null)
+        if(categories == null) {
             categories = new HashSet<Category>();
+            categories.add(category);
+        }
         else if(!categories.contains(category))
             categories.add(category);
     }
 
     @Override
     public String toString() {
-        return "id: " + id + " name: " + name + "ingredients: " + ingredients + " dishID: " + dishID;
+        return "id: " + id + " name: " + name + " ingredients: " + ingredients + " dishID: " + dishID;
     }
 }
