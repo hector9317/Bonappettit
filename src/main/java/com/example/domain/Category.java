@@ -17,55 +17,76 @@ public class Category {
 	@Relationship(type = "IS", direction = Relationship.INCOMING)
 	private Set<Dish> dishes;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public int getCategoryID() {
+        return categoryID;
+    }
 
-	public int getCategoryID() {
-		return categoryID;
-	}
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
 
-	public void setCategoryID(int categoryID) {
-		this.categoryID = categoryID;
-	}
-	
-	public void hasDish(Dish dish) {
-		if(dishes == null)
-			dishes = new HashSet<Dish>();
-		dishes.add(dish);
-	}
+    public Set<Dish> getDishes() {
+        return dishes;
+    }
 
-	public Set<Dish> getDishes() {
-		return dishes;
-	}
+    public void setDishes(Set<Dish> dishes) {
+        this.dishes = dishes;
+    }
 
-	public void setDishes(Set<Dish> dishes) {
-		this.dishes = dishes;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+    }
 
-	@Override
-	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", type=" + type + ", categoryID=" + categoryID + "]";
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+                return true;
+        if (obj == null)
+                return false;
+        if (getClass() != obj.getClass())
+                return false;
+        Category other = (Category) obj;
+        if (name == null) {
+                if (other.name != null)
+                        return false;
+        } else if (!name.equals(other.name))
+                return false;
+        return true;
+    }
 
+    public void addDishes(Dish dish) {
+        if(dishes == null)
+            dishes = new HashSet<Dish>();
+        else if(!dishes.contains(dish))
+            dishes.add(dish);
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + id + " name: " + name + " type: " + type + " categoryID: " + categoryID;
+    }
 }
