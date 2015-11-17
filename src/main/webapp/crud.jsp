@@ -643,7 +643,7 @@
                                                                         </div><!--aqui-->
                                                                         </div>
                                                                         <div id="edit_dish" class="tab-pane fade">
-                                                                            <h3>Modificar Platillo</h3>
+                                                                            <br>
 
                                                                             <div class="row" >
                                                                                 <div class="col-lg-5">
@@ -659,6 +659,51 @@
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
+                                                                                  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre Platillo</th>
+        <th>Ingredientes</th>
+        <th>Categorias</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Platillo 1</td>
+        <td>Ingredientes</td>
+        <td>Segundos Platos|Familiares</td>
+        <td>
+       <button type="button" class="btn btn-info">Modificar</button>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Platillo 2</td>
+        <td>Ingredientes</td>
+        <td>Segundos Platos|Familiares</td>
+        <td>
+        <button type="button" class="btn btn-info">Modificar</button>
+        </td>
+      </tr>
+       <tr>
+        <td>3</td>
+        <td>Platillo 3</td>
+        <td>Ingredientes</td>
+        <td>Segundos Platos|Familiares</td>
+        <td>
+         <button type="button" class="btn btn-info">Modificar</button>
+        </td>
+      </tr>
+      
+        
+      </tr>
+    </tbody>
+  </table>
+  </div>
                                                                                                    <div class="row">
                             <form role="form" method="post" action="create.jsp">
                                 <div class="col-lg-6">
@@ -1194,7 +1239,7 @@
 
                                                                         </div>
                                                                         <div id="delete_dish" class="tab-pane fade">
-                                                                            <h3>Eliminar Platillo</h3>
+                                                                            <br>
                                                                             <div class="row" >
                                                                                 <div class="col-lg-5">
                                                                                     <div class="input-group">
@@ -1210,12 +1255,76 @@
                                                                             </div>
                                                                             <hr>
                                                                             <div>
-                                                                                <h2>Resultados</h2>
+                                                                                <h4>Resultados de la Busqueda</h4>
                                                                             </div>
                                                                         </div>
 
                                                                         </div>
-
+                                                                             <div class="container">
+  
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre Platillo</th>
+        <th>Ingredientes</th>
+        <th>Categorias</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Platillo 1</td>
+        <td>Ingredientes</td>
+        <td>Segundos Platos|Familiares</td>
+        <td>
+            <button type="button" class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Platillo 2</td>
+        <td>Ingredientes</td>
+        <td>Segundos Platos|Familiares</td>
+        <td>
+            <button type="button" class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+       <tr>
+        <td>3</td>
+        <td>Platillo 3</td>
+        <td>Ingredientes</td>
+        <td>Segundos Platos|Familiares</td>
+        <td>
+            <button type="button" class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+        <tr>
+        <td>4</td>
+        <td>Platillo 4</td>
+        <td>Ingredientes</td>
+        <td>Segundos Platos|Familiares</td>
+        <td>
+            <button type="button" class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+        <tr>
+        <td>5</td>
+        <td>Platillo 5</td>
+        <td>Ingredientes</td>
+        <td>Segundos Platos|Familiares</td>
+        <td>
+            <button type="button" class="btn btn-danger">Eliminar</button>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+   
 
                                                                         </div>
                                                                         </div>
