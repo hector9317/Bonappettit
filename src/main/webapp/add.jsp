@@ -1,10 +1,3 @@
-<%-- 
-    Document   : add
-    Created on : 18/11/2015, 10:30:03 AM
-    Author     : tono
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -650,3 +643,4 @@
     <script src="js/bootstrap.js"></script>
 </body>
 </html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>

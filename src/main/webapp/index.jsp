@@ -1,10 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 18/11/2015, 10:30:37 AM
-    Author     : tono
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -18,7 +11,7 @@
         <title>Bonappettit</title>
         <!-- BOOTSTRAP CORE STYLE  -->
         <link href="css/bootstrap.css" rel="stylesheet" />
-         <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
         <!-- FONT AWESOME ICONS  -->
         <link href="css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLE  -->
@@ -76,35 +69,35 @@
                            </ul>
                        </div>
                    </div>-->
-                
+
             </div>
         </div>
         <!-- LOGO HEADER END-->
         <section class="menu-section">
-            
+
             <div class="container">
-                
+
                 <div class="row">
                     <div class="col-md-12">
                         <br>
-                        <div class="col-lg-5">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Buscar Platillo....">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </button>
-                                    </span>
-                            </div>
+                            <div class="col-lg-5">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Buscar Platillo....">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </span>
+                                </div>
 
-                        </div>
-                        <div class="navbar-collapse collapse ">
-                            <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                <li><a class="menu-top-active" href="index.jsp">Menu Principal</a></li>
-                                <li><a href="add.jsp">Agregar</a></li>
-                                <li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>
-                             </ul>
-                        </div>
+                            </div>
+                            <div class="navbar-collapse collapse ">
+                                <ul id="menu-top" class="nav navbar-nav navbar-right">
+                                    <li><a class="menu-top-active" href="index.jsp">Menu Principal</a></li>
+                                    <li><a href="add.jsp">Agregar</a></li>
+                                    <li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>
+                                </ul>
+                            </div>
                     </div>
 
                 </div>
@@ -122,115 +115,106 @@
                             <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                         </a>
                         <h3>
-                            <a href="#">Nombre Del Platillo</a>
+                            <a href="information.jsp">Nombre Del Platillo</a>
                         </h3>
-                        <p>Ingredientes</p>
-                        <p>Categorias</p>
+
                     </div>
                     <div class="col-md-4 portfolio-item">
                         <a href="#">
                             <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                         </a>
                         <h3>
-                            <a href="#">Nombre Del Platillo</a>
+                            <a href="information.jsp">Nombre Del Platillo</a>
                         </h3>
-                        <p>Ingredientes</p>
-                        <p>Categorias</p>
+
                     </div>
                     <div class="col-md-4 portfolio-item">
                         <a href="#">
                             <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                         </a>
                         <h3>
-                            <a href="#">Nombre Del Platillo</a>
+                            <a href="information.jsp">Nombre Del Platillo</a>
                         </h3>
-                        <p>Ingredientes</p>
-                        <p>Categorias</p>
+
                     </div>
                 </div>                    
+                <hr>
+                    <div class="row">
+                        <div class="col-md-4 portfolio-item">
+                            <a href="#">
+                                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                            </a>
+                            <h3>
+                                <a href="information.jsp">Nombre Del Platillo</a>
+                            </h3>
+
+                        </div>
+                        <div class="col-md-4 portfolio-item">
+                            <a href="#">
+                                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                            </a>
+                            <h3>
+                                <a href="#">Nombre Del Platillo</a>
+                            </h3>
+
+                        </div>
+                        <div class="col-md-4 portfolio-item">
+                            <a href="#">
+                                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                            </a>
+                            <h3>
+                                <a href="information.jsp">Nombre Del Platillo</a>
+                            </h3>
+                           
+                        </div>
+                    </div>
                     <hr>
-                     <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Nombre Del Platillo</a>
-                </h3>
-                <p>Ingredientes</p>
-                <p>Categorias</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Nombre Del Platillo</a>
-                </h3>
-                <p>Ingredientes</p>
-                <p>Categorias</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Nombre Del Platillo</a>
-                </h3>
-                <p>Ingredientes</p>
-                <p>Categorias</p>
-            </div>
-        </div>
-                        <hr>
-                               <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Nombre Del Platillo</a>
-                </h3>
-                <p>Ingredientes</p>
-                <p>Categorias</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Nombre Del Platillo</a>
-                </h3>
-                <p>Ingredientes</p>
-                <p>Categorias</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Nombre Del Platillo</a>
-                </h3>
-                <p>Ingredientes</p>
-                <p>Categorias</p>
-            </div>
-        </div>
+                        <div class="row">
+                            <div class="col-md-4 portfolio-item">
+                                <a href="#">
+                                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                                </a>
+                                <h3>
+                                    <a href="information.jsp">Nombre Del Platillo</a>
+                                </h3>
 
-                </div>
-            </div>
-        
+                            </div>
+                            <div class="col-md-4 portfolio-item">
+                                <a href="#">
+                                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                                </a>
+                                <h3>
+                                    <a href="information.jsp">Nombre Del Platillo</a>
+                                </h3>
 
-        <!-- CONTENT-WRAPPER SECTION END-->
-        <footer>
-            <div class="container">
-                <div class="row">
-                </div>
-            </div>
-        </footer>
-        <!-- FOOTER SECTION END-->
-        <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-        <!-- CORE JQUERY SCRIPTS -->
-        <script src="js/jquery-1.11.1.js"></script>
-        <!-- BOOTSTRAP SCRIPTS  -->
-        <script src="js/bootstrap.js"></script>
-    </body>
+                            </div>
+                            <div class="col-md-4 portfolio-item">
+                                <a href="#">
+                                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                                </a>
+                                <h3>
+                                    <a href="information.jsp">Nombre Del Platillo</a>
+                                </h3>
+
+                            </div>
+                        </div>
+
+                        </div>
+                        </div>
+
+
+                        <!-- CONTENT-WRAPPER SECTION END-->
+                        <footer>
+                            <div class="container">
+                                <div class="row">
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- FOOTER SECTION END-->
+                        <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+                        <!-- CORE JQUERY SCRIPTS -->
+                        <script src="assets/js/jquery-1.11.1.js"></script>
+                        <!-- BOOTSTRAP SCRIPTS  -->
+                        <script src="assets/js/bootstrap.js"></script>
+                        </body>
 </html>

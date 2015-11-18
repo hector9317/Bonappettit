@@ -1,11 +1,4 @@
-<%-- 
-    Document   : modify_or_delete
-    Created on : 18/11/2015, 10:31:12 AM
-    Author     : tono
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
@@ -229,3 +222,4 @@
         <script src="js/bootstrap.js"></script>
     </body>
 </html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
