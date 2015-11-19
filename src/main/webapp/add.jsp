@@ -94,7 +94,7 @@
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="index.jsp">Menu Principal</a></li>
                             <li><a class="menu-top-active"  href="add.jsp">Agregar</a></li>
-                            <li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>
+                          <!--  <li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>-->
                             
                            
                         </ul>
