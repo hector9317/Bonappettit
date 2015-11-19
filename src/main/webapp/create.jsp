@@ -1,12 +1,12 @@
 <%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
-<%@page import="com.example.dao.category.CategoryDAOImpl"%>
-<%@page import="com.example.dao.dish.DishDAOImpl"%>
+<%@page import="com.aht.dao.category.CategoryDAOImpl"%>
+<%@page import="com.aht.dao.dish.DishDAOImpl"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.example.domain.Category"%>
+<%@page import="com.aht.domain.Category"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
-<%@page import="com.example.domain.Dish"%>
+<%@page import="com.aht.domain.Dish"%>
 
 <%
 	DishDAOImpl ddi = (DishDAOImpl) new ClassPathXmlApplicationContext("config.xml").getBean("dishDAO");
