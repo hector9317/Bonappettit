@@ -28,6 +28,8 @@
         <!-- HEADER END-->
         <div class="navbar navbar-inverse set-radius-zero">
             <div class="container">
+                
+                <img src="img/bonappetit.png" style="width: 90px;padding-top:5px;padding-bottom: 5px;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>

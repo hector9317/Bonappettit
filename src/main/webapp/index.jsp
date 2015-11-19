@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
@@ -26,8 +26,11 @@
     <body>
 
         <!-- HEADER END-->
-        <div class="navbar navbar-inverse set-radius-zero">
+                <div class="navbar navbar-inverse set-radius-zero">
             <div class="container">
+                
+                <img src="img/bonappetit.png" style="width: 90px;padding-top:5px;padding-bottom: 5px;">
+               
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -69,7 +72,7 @@
                            </ul>
                        </div>
                    </div>-->
-
+                
             </div>
         </div>
         <!-- LOGO HEADER END-->
@@ -154,7 +157,7 @@
                                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                             </a>
                             <h3>
-                                <a href="#">Nombre Del Platillo</a>
+                                <a href="information.jsp">Nombre Del Platillo</a>
                             </h3>
 
                         </div>
@@ -213,8 +216,8 @@
                         <!-- FOOTER SECTION END-->
                         <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
                         <!-- CORE JQUERY SCRIPTS -->
-                        <script src="assets/js/jquery-1.11.1.js"></script>
+                        <script src="js/jquery-1.11.1.js"></script>
                         <!-- BOOTSTRAP SCRIPTS  -->
-                        <script src="assets/js/bootstrap.js"></script>
+                        <script src="js/bootstrap.js"></script>
                         </body>
 </html>
