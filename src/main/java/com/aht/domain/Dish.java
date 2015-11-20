@@ -13,6 +13,7 @@ public class Dish {
 	private int dishID;
 	private String name;
 	private String ingredients;
+	private String picture;
 	@Relationship(type = "IS", direction = Relationship.OUTGOING)
     private Set<Category> categories;
 
@@ -43,6 +44,14 @@ public class Dish {
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
+    
+    public String getPicture() {
+    	return picture;
+    }
+    
+    public void setPicture(String picture) {
+    	this.picture = picture;
+    }
 
     public Set<Category> getCategories() {
         return categories;
@@ -50,6 +59,15 @@ public class Dish {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
+    }
+    
+    public String getCategoriesNames() {
+    	String names = "";
+    	Set<Category> categories = this.getCategories();
+    	if(categories != null)
+    		for(Category category : categories)
+    			names += category.getName() + "|";
+    	return names;
     }
 
     @Override
