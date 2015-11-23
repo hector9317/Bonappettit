@@ -1,7 +1,8 @@
 package com.aht.domain;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
@@ -13,7 +14,7 @@ public class Dish {
 	private int dishID;
 	private String name;
 	private String ingredients;
-	private String picture;
+    private String picture;
 	@Relationship(type = "IS", direction = Relationship.OUTGOING)
     private Set<Category> categories;
 
@@ -44,14 +45,6 @@ public class Dish {
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
-    
-    public String getPicture() {
-    	return picture;
-    }
-    
-    public void setPicture(String picture) {
-    	this.picture = picture;
-    }
 
     public Set<Category> getCategories() {
         return categories;
@@ -60,13 +53,21 @@ public class Dish {
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
+
+    public String getPicture() {
+        return this.picture;
+    }
     
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public String getCategoriesNames() {
     	String names = "";
     	Set<Category> categories = this.getCategories();
     	if(categories != null)
     		for(Category category : categories)
-    			names += category.getName() + "|";
+    			names += category.getName() + ",";
     	return names;
     }
 
