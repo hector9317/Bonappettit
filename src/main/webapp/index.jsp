@@ -97,8 +97,9 @@
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
                                     <li><a class="menu-top-active" href="index.jsp">Menu Principal</a></li>
-                                    <li><a href="add.jsp">Agregar</a></li>
-                                    <!--<li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>-->
+                                    <li><a href="form.jsp">Agregar</a></li>
+<!-- ________________________________________________________________________________________________________________________________________________________________ -->
+                                    <li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>
                                 </ul>
                             </div>
                     </div>
