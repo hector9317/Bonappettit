@@ -1,7 +1,6 @@
 package com.aht.dao.category;
 
 import java.util.LinkedList;
-
 import com.aht.domain.Category;
 
 public interface CategoryDAO {
