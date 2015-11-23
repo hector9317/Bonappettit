@@ -1,19 +1,21 @@
 package com.aht.dao.dish;
 
-import java.util.LinkedList;
 import com.aht.domain.Dish;
 import com.aht.model.Counter;
 import com.aht.dao.counter.CounterDAOImpl;
+import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.LinkedList;
+
 import org.neo4j.helpers.collection.MapUtil;
 import org.neo4j.ogm.session.Session;
-import org.neo4j.ogm.session.SessionFactory;
 
 public class DishDAOImpl implements DishDAO {
 	private Session session;
-			
+	
 	public DishDAOImpl() {
-		this.session = new SessionFactory("com.example.domain").openSession("http://localhost:7474", "neo4j", "burros93");
+		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "burros93");
 	}
 		
 	public void create(Dish dish) {
@@ -38,7 +40,8 @@ public class DishDAOImpl implements DishDAO {
 	}
 
 	public void delete(Dish dish) {
-		session.delete(dish);
+		if(exists(dish))
+			session.delete(dish);
 	}
 
 	public LinkedList<Dish> retrieveAll() {
