@@ -1,34 +1,20 @@
-ï»¿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
+<%@page import="com.aht.dao.dish.DishDAOImpl"%>
+<%@page import="com.aht.domain.Dish"%>
+<html>
 <head>
-    <meta charset="utf-8" />
+    <!--  <meta charset="utf-8" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
     <title>Bonappettit</title>
-    <!-- BOOTSTRAP CORE STYLE  -->
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <!-- FONT AWESOME ICONS  -->
     <link href="css/font-awesome.css" rel="stylesheet" />
-    <!-- CUSTOM STYLE  -->
     <link href="css/style.css" rel="stylesheet" />
-     <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
-   
-    <!-- HEADER END-->
     <div class="navbar navbar-inverse set-radius-zero">
         <div class="container">
-            
             <img src="img/bonappetit.png" style="width: 90px;padding-top:5px;padding-bottom: 5px;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -36,44 +22,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
             </div>
-
-         <!--   <div class="left-div">
-                <div class="user-settings-wrapper">
-                    <ul class="nav">
-
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                                <span class="glyphicon glyphicon-user" style="font-size: 25px;"></span>
-                            </a>
-                            <div class="dropdown-menu dropdown-settings">
-                                <div class="media">
-                                    <a class="media-left" href="#">
-                                        <img src="assets/img/64-64.jpg" alt="" class="img-rounded" />
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">Jhon Deo Alex </h4>
-                                        <h5>Developer & Designer</h5>
-
-                                    </div>
-                                </div>
-                                <hr />
-                                <h5><strong>Personal Bio : </strong></h5>
-                                Anim pariatur cliche reprehen derit.
-                                <hr />
-                                <a href="#" class="btn btn-info btn-sm">Full Profile</a>&nbsp; <a href="login.html" class="btn btn-danger btn-sm">Logout</a>
-
-                            </div>
-                        </li>
-
-
-                    </ul>
-                </div>
-            </div>-->
         </div>
     </div>
-    <!-- LOGO HEADER END-->
     <section class="menu-section">
         <div class="container">
             <div class="row">
@@ -88,27 +39,21 @@
                                         </button>
                                     </span>
                             </div>
-
                         </div>
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="index.jsp">Menu Principal</a></li>
-                            <li><a class="menu-top-active"  href="add.jsp">Agregar</a></li>
-                          <!--  <li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>-->
-                            
-                           
+                            <li><a class="menu-top-active"  href="form.jsp">Agregar</a></li>
+                          	<li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-    <!-- MENU SECTION END-->
     <div class="content-wrapper">
         <div class="container">
             <div class="row">
-                
                 <form role="form" method="post" action="create.jsp">
 								<div class="col-lg-6">
 									<div class="well well-sm">
@@ -116,6 +61,19 @@
 											Requeridos</strong>
 									</div>
 									<hr>
+									
+									<%
+									int id = 0;
+									try {
+										id = Integer.parseInt(request.getParameter("id"));
+										DishDAOImpl ddi = (DishDAOImpl) new ClassPathXmlApplicationContext("config.xml").getBean("dishDAO");
+										Dish dish = ddi.retrieve(id);										
+									} catch(NumberFormatException nfe) { System.err.println("Error"); }
+									
+									%>
+									
+									
+									<input id="idValue" name="idValue" value="<%=id%>" type="hidden" required />
 									<div class="form-group">
 										<label for="InputName">Nombre del Platillo</label>
 										<div class="input-group">
@@ -180,7 +138,7 @@
 																								type="checkbox" name="Tipo" value="Ensaladas">Ensaladas
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo"
-																								value="Contenido AlcohÃ³lico">Contenido
+																								value="Contenido Alcohólico">Contenido
 																								Alcoh&oacute;lico
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo"
@@ -214,7 +172,7 @@
 																							</label><label class="checkbox"> <input
 																								type="checkbox" name="Tipo" value="Huevos">Huevos
 																							</label> <label class="checkbox"> <input
-																								type="checkbox" name="Tipo" value="LÃ¡cteos">L&aacute;cteos
+																								type="checkbox" name="Tipo" value="Lácteos">L&aacute;cteos
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo" value="Frutos Secos">Frutos
 																								Secos
@@ -243,7 +201,7 @@
 																								type="checkbox" name="Tipo" value="Entradas">Entradas
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo"
-																								value="AcompaÃ±amiento">Acompa&ntilde;amiento
+																								value="Acompañamiento">Acompa&ntilde;amiento
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo" value="Emparedados">Emparedados
 																							</label> <label class="checkbox"> <input
@@ -332,7 +290,7 @@
 																						<label class="checkbox"> <input
 																							type="checkbox" name="Ocasion" value="Verano">Verano
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Ocasion" value="OtoÃ±o">Oto&ntilde;o
+																							type="checkbox" name="Ocasion" value="Otoño">Oto&ntilde;o
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Ocasion" value="Invierno">Invierno
 																						</label> <label class="checkbox"> <input
@@ -348,7 +306,7 @@
 																							type="checkbox" name="Ocasion" value="Meriendas">Meriendas
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Ocasion"
-																							value="OcaciÃ³n Especial">Ocasi&oacute;n
+																							value="Ocación Especial">Ocasi&oacute;n
 																							Especial
 																						</label>
 																					</div>
@@ -375,15 +333,15 @@
 																						<label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Italiana">Italiana
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="MediterrÃ¡nea">Mediterr&aacute;nea
+																							type="checkbox" name="Region" value="Mediterránea">Mediterr&aacute;nea
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="AsiÃ¡tica">AsiÃ¡tica
+																							type="checkbox" name="Region" value="Asiática">Asiática
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Mexicana">Mexicana
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Americana">Americana
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="HindÃº">Hind&uacute;
+																							type="checkbox" name="Region" value="Hindú">Hind&uacute;
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Francesa">Francesa
 																						</label> <label class="checkbox"> <input
@@ -407,7 +365,7 @@
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Argentina">Argentina
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="BrasileÃ±a">Brasile&ntilde;a
+																							type="checkbox" name="Region" value="Brasileña">Brasile&ntilde;a
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Colombiana">Colombiana
 																						</label>
@@ -420,7 +378,7 @@
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Cubana">Cubana
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="EspaÃ±ola">Espa&ntilde;ola
+																							type="checkbox" name="Region" value="Española">Espa&ntilde;ola
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Filandesa">Filandesa
 																						</label> <label class="checkbox"> <input
@@ -456,7 +414,7 @@
 																						value="Bajas en Colesterol">Bajas en
 																						Colesterol
 																					</label> <label class="checkbox"> <input
-																						type="checkbox" name="Salud" value="DiabÃ©ticos">Diab&eacute;ticos
+																						type="checkbox" name="Salud" value="Diabéticos">Diab&eacute;ticos
 																					</label> <label class="checkbox"> <input
 																						type="checkbox" name="Salud" value="Sin Lactosa">Sin
 																						Lactosa
@@ -468,7 +426,7 @@
 																					<label class="checkbox"> <input
 																						type="checkbox" name="Salud" value="Celiacos">Celiacos
 																					</label> <label class="checkbox"> <input
-																						type="checkbox" name="Salud" value="AlÃ©rgicos">Al&eacute;rgicos
+																						type="checkbox" name="Salud" value="Alérgicos">Al&eacute;rgicos
 																					</label>
 																				</div>
 																			</div>
@@ -541,9 +499,9 @@
 																				<div class="col-xs-4">
 																					<div style="height: auto; text-align: left">
 																						<label class="checkbox"> <input
-																							type="checkbox" name="Persona" value="BebÃ©s">Beb&eacute;s
+																							type="checkbox" name="Persona" value="Bebés">Beb&eacute;s
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Persona" value="NiÃ±os">Ni&ntilde;os
+																							type="checkbox" name="Persona" value="Niños">Ni&ntilde;os
 																						</label>
 																					</div>
 																				</div>
@@ -583,7 +541,7 @@
 																				<div class="col-xs-4">
 																					<div style="height: auto; text-align: left">
 																						<label class="checkbox"> <input
-																							type="checkbox" name="Textura" value="LÃ­quidas">L&iacute;quidas
+																							type="checkbox" name="Textura" value="Líquidas">L&iacute;quidas
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Textura" value="Blandas">Blandas
 																						</label>
@@ -637,12 +595,9 @@
             </div>
         </div>
     </footer>
-    <!-- FOOTER SECTION END-->
-    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- CORE JQUERY SCRIPTS -->
     <script src="js/jquery-1.11.1.js"></script>
-    <!-- BOOTSTRAP SCRIPTS  -->
     <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script>    
 </body>
 </html>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="utf-8"%>

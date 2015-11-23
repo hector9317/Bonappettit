@@ -1,19 +1,21 @@
 package com.aht.dao.category;
 
 import java.util.LinkedList;
-import com.aht.model.Counter;
-import com.aht.domain.Category;
-import com.aht.dao.counter.CounterDAOImpl;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import org.neo4j.helpers.collection.MapUtil;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.aht.dao.counter.CounterDAOImpl;
+import com.aht.domain.Category;
+import com.aht.model.Counter;
 
 public class CategoryDAOImpl implements CategoryDAO {
 	private Session session;
 	
 	public CategoryDAOImpl() {
-		this.session = new SessionFactory("com.example.domain").openSession("http://localhost:7474", "neo4j", "burros93");
+		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "burros93");
 	}
 	
 	public void create(Category category) {

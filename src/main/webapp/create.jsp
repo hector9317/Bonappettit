@@ -1,3 +1,4 @@
+<%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
 <%@page import="com.aht.dao.category.CategoryDAOImpl"%>
 <%@page import="com.aht.dao.dish.DishDAOImpl"%>
@@ -9,14 +10,16 @@
 <%@page import="com.aht.domain.Dish"%>
 
 <%
-	DishDAOImpl ddi = (DishDAOImpl) new ClassPathXmlApplicationContext("config.xml").getBean("dishDAO");
-	CategoryDAOImpl cdi = (CategoryDAOImpl) new ClassPathXmlApplicationContext("config.xml").getBean("categoryDAO");
-
-	String[][] categories = new String[8][];
-	String[] types = {"kind", "flavour", "occasion", "region", "health", "temperature", "people", "texture"};
-
+	int id = Integer.parseInt(request.getParameter("idValue"));
 	String name = request.getParameter("InputName");
 	String ingredients = request.getParameter("InputMessage");
+	
+	System.out.print("----------------->>>");
+	DishDAOImpl ddi = new DishDAOImpl();
+	CategoryDAOImpl cdi = new CategoryDAOImpl();
+	
+	String[][] categories = new String[8][];
+	String[] types = {"kind", "flavour", "occasion", "region", "health", "temperature", "people", "texture"};
 	
 	categories[0] = request.getParameterValues("Tipo");
 	categories[1] = request.getParameterValues("Sabor");
@@ -27,17 +30,21 @@
 	categories[6] = request.getParameterValues("Persona");
 	categories[7] = request.getParameterValues("Textura");
 	
-	Dish dish = new Dish();
+	System.out.println("---------------> " + name);
+	
+	Dish dish = new Dish();	
+	if(id != 0)
+		dish = ddi.retrieve(id);
+	else
+		dish = new Dish();
+	
 	dish.setName(name);
 	dish.setIngredients(ingredients);
 	Category category = null;
 	
 	for(int i = 0; i < categories.length; i++) {
 		if(categories[i] != null) {
-			System.out.println("i: " + i);
-			//for(int j = 0; j < categories[i][j].length(); j++) {
 			for(String c : categories[i]) {
-				System.out.println("category: " + c);
 				category = new Category();
 				category.setType(types[i]);
 				category.setName(c);
@@ -46,12 +53,13 @@
 			    	cdi.create(category);
 				} else {
 					category = cdi.findByName(c);
-					System.out.println("----> " + category.toString());
 				}
 				dish.addCategories(category);
 			}
 		}
+		if(id != 0)
+			ddi.update(dish);
+		else
+			ddi.create(dish);
 	}
-   	ddi.create(dish);
-	System.out.println(dish.toString());
 %>
