@@ -17,7 +17,14 @@ public class DishDAOImpl implements DishDAO {
 	public DishDAOImpl() {
 		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "burros93");
 	}
-		
+	//given:
+	//  Dish dish
+	//when:
+	//  create(dish)
+	//then:
+	//  dish.id != null
+
+
 	public void create(Dish dish) {
 		CounterDAOImpl cdi = null;
 		cdi = (CounterDAOImpl) new ClassPathXmlApplicationContext("config.xml").getBean("counterDAO");
