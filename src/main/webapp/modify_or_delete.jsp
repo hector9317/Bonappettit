@@ -89,16 +89,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Platillo 1</td>
-                                            <td>Ingredientes</td>
-                                            <td>Segundos Platos|Familiares</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger">Eliminar</button>
-                                                <a href="add.jsp"><button type="button" class="btn btn-info">Modificar</button></a>
-                                            </td>
-                                        </tr>
 								<%
 								DishDAOImpl ddi = new DishDAOImpl();
 								LinkedList<Dish> dishes = ddi.retrieveAll();
