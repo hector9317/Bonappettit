@@ -318,3 +318,16 @@ footer {
   right: 0;
   min-height: 90px;
 }
+
+.idDish {
+	width: 4%;
+}
+
+.name {
+	width: 20%;
+}
+
+.options {
+	width: 20%;
+}
+

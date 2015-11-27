@@ -30,8 +30,6 @@
 	categories[6] = request.getParameterValues("Persona");
 	categories[7] = request.getParameterValues("Textura");
 	
-	System.out.println("---------------> " + name);
-	
 	Dish dish = new Dish();	
 	if(id != 0)
 		dish = ddi.retrieve(id);
@@ -62,4 +60,5 @@
 		else
 			ddi.create(dish);
 	}
+	response.sendRedirect("modify_or_delete.jsp");
 %>
