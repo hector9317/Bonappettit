@@ -44,7 +44,7 @@
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="index.jsp">Menu Principal</a></li>
                             <li><a class="menu-top-active"  href="form.jsp">Agregar</a></li>
-                          	<li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>
+                          	<!--<li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li>-->
                         </ul>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
 																								type="checkbox" name="Tipo" value="Ensaladas">Ensaladas
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo"
-																								value="Contenido Alcohólico">Contenido
+																								value="Contenido Alcohï¿½lico">Contenido
 																								Alcoh&oacute;lico
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo"
@@ -172,7 +172,7 @@
 																							</label><label class="checkbox"> <input
 																								type="checkbox" name="Tipo" value="Huevos">Huevos
 																							</label> <label class="checkbox"> <input
-																								type="checkbox" name="Tipo" value="Lácteos">L&aacute;cteos
+																								type="checkbox" name="Tipo" value="Lï¿½cteos">L&aacute;cteos
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo" value="Frutos Secos">Frutos
 																								Secos
@@ -201,7 +201,7 @@
 																								type="checkbox" name="Tipo" value="Entradas">Entradas
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo"
-																								value="Acompañamiento">Acompa&ntilde;amiento
+																								value="Acompaï¿½amiento">Acompa&ntilde;amiento
 																							</label> <label class="checkbox"> <input
 																								type="checkbox" name="Tipo" value="Emparedados">Emparedados
 																							</label> <label class="checkbox"> <input
@@ -290,7 +290,7 @@
 																						<label class="checkbox"> <input
 																							type="checkbox" name="Ocasion" value="Verano">Verano
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Ocasion" value="Otoño">Oto&ntilde;o
+																							type="checkbox" name="Ocasion" value="Otoï¿½o">Oto&ntilde;o
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Ocasion" value="Invierno">Invierno
 																						</label> <label class="checkbox"> <input
@@ -306,7 +306,7 @@
 																							type="checkbox" name="Ocasion" value="Meriendas">Meriendas
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Ocasion"
-																							value="Ocación Especial">Ocasi&oacute;n
+																							value="Ocaciï¿½n Especial">Ocasi&oacute;n
 																							Especial
 																						</label>
 																					</div>
@@ -333,15 +333,15 @@
 																						<label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Italiana">Italiana
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="Mediterránea">Mediterr&aacute;nea
+																							type="checkbox" name="Region" value="Mediterrï¿½nea">Mediterr&aacute;nea
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="Asiática">Asiática
+																							type="checkbox" name="Region" value="Asiï¿½tica">Asiï¿½tica
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Mexicana">Mexicana
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Americana">Americana
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="Hindú">Hind&uacute;
+																							type="checkbox" name="Region" value="Hindï¿½">Hind&uacute;
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Francesa">Francesa
 																						</label> <label class="checkbox"> <input
@@ -365,7 +365,7 @@
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Argentina">Argentina
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="Brasileña">Brasile&ntilde;a
+																							type="checkbox" name="Region" value="Brasileï¿½a">Brasile&ntilde;a
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Colombiana">Colombiana
 																						</label>
@@ -378,7 +378,7 @@
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Cubana">Cubana
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Region" value="Española">Espa&ntilde;ola
+																							type="checkbox" name="Region" value="Espaï¿½ola">Espa&ntilde;ola
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Region" value="Filandesa">Filandesa
 																						</label> <label class="checkbox"> <input
@@ -414,7 +414,7 @@
 																						value="Bajas en Colesterol">Bajas en
 																						Colesterol
 																					</label> <label class="checkbox"> <input
-																						type="checkbox" name="Salud" value="Diabéticos">Diab&eacute;ticos
+																						type="checkbox" name="Salud" value="Diabï¿½ticos">Diab&eacute;ticos
 																					</label> <label class="checkbox"> <input
 																						type="checkbox" name="Salud" value="Sin Lactosa">Sin
 																						Lactosa
@@ -426,7 +426,7 @@
 																					<label class="checkbox"> <input
 																						type="checkbox" name="Salud" value="Celiacos">Celiacos
 																					</label> <label class="checkbox"> <input
-																						type="checkbox" name="Salud" value="Alérgicos">Al&eacute;rgicos
+																						type="checkbox" name="Salud" value="Alï¿½rgicos">Al&eacute;rgicos
 																					</label>
 																				</div>
 																			</div>
@@ -499,9 +499,9 @@
 																				<div class="col-xs-4">
 																					<div style="height: auto; text-align: left">
 																						<label class="checkbox"> <input
-																							type="checkbox" name="Persona" value="Bebés">Beb&eacute;s
+																							type="checkbox" name="Persona" value="Bebï¿½s">Beb&eacute;s
 																						</label> <label class="checkbox"> <input
-																							type="checkbox" name="Persona" value="Niños">Ni&ntilde;os
+																							type="checkbox" name="Persona" value="Niï¿½os">Ni&ntilde;os
 																						</label>
 																					</div>
 																				</div>
@@ -541,7 +541,7 @@
 																				<div class="col-xs-4">
 																					<div style="height: auto; text-align: left">
 																						<label class="checkbox"> <input
-																							type="checkbox" name="Textura" value="Líquidas">L&iacute;quidas
+																							type="checkbox" name="Textura" value="Lï¿½quidas">L&iacute;quidas
 																						</label> <label class="checkbox"> <input
 																							type="checkbox" name="Textura" value="Blandas">Blandas
 																						</label>
