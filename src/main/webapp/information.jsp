@@ -1,4 +1,23 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
+<%
+    if(request.getParameter("dish") != null) {
+        String dish_id = request.getParameter("dish");
+        int counter = 1;
+        Cookie[] cookies = request.getCookies();
+        for(Cookie saved: cookies){
+            if(saved.getName().equals(dish_id)){
+                counter = Integer.parseInt(saved.getValue()) + 1;
+                saved.setMaxAge(0);
+                response.addCookie(saved);
+            }
+        }
+        Cookie cookie = new Cookie(dish_id, counter + "");
+        response.addCookie(cookie);
+
+    } else {
+        //TODO: If dish is not especified, redirect to index page
+    }
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />

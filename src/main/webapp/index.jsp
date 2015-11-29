@@ -1,3 +1,6 @@
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="com.aht.dao.dish.DishDAOImpl" %>
+<%@ page import="com.aht.domain.Dish" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -109,6 +112,10 @@
         </section>
         <!-- MENU SECTION END-->
         <div class="content-wrapper">
+            <%
+                DishDAOImpl ddi = new DishDAOImpl();
+                //LinkedList<Dish> dishes = ddi.retrieveAll();
+            %>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -141,69 +148,110 @@
                         </h3>
 
                     </div>
-                </div>                    
-                <hr>
-                    <div class="row">
-                        <div class="col-md-4 portfolio-item">
-                            <a href="#">
-                                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                            </a>
-                            <h3>
-                                <a href="information.jsp">Nombre Del Platillo</a>
-                            </h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 portfolio-item">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </a>
+                        <h3>
+                            <a href="information.jsp">Nombre Del Platillo</a>
+                        </h3>
 
-                        </div>
-                        <div class="col-md-4 portfolio-item">
-                            <a href="#">
-                                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                            </a>
-                            <h3>
-                                <a href="information.jsp">Nombre Del Platillo</a>
-                            </h3>
-
-                        </div>
-                        <div class="col-md-4 portfolio-item">
-                            <a href="#">
-                                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                            </a>
-                            <h3>
-                                <a href="information.jsp">Nombre Del Platillo</a>
-                            </h3>
-                           
-                        </div>
                     </div>
-                    <hr>
-                        <div class="row">
-                            <div class="col-md-4 portfolio-item">
-                                <a href="#">
-                                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                                </a>
-                                <h3>
-                                    <a href="information.jsp">Nombre Del Platillo</a>
-                                </h3>
+                    <div class="col-md-4 portfolio-item">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </a>
+                        <h3>
+                            <a href="information.jsp">Nombre Del Platillo</a>
+                        </h3>
 
-                            </div>
-                            <div class="col-md-4 portfolio-item">
-                                <a href="#">
-                                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                                </a>
-                                <h3>
-                                    <a href="information.jsp">Nombre Del Platillo</a>
-                                </h3>
+                    </div>
+                    <div class="col-md-4 portfolio-item">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </a>
+                        <h3>
+                            <a href="information.jsp">Nombre Del Platillo</a>
+                        </h3>
 
-                            </div>
-                            <div class="col-md-4 portfolio-item">
-                                <a href="#">
-                                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                                </a>
-                                <h3>
-                                    <a href="information.jsp">Nombre Del Platillo</a>
-                                </h3>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <%
+                Cookie[] cookies = request.getCookies();
+                if(cookies != null && cookies.length > 1) {
+            %>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="page-head-line">Recomendado para ti</h4>
+                    </div>
+                    <div class="col-md-4 portfolio-item">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </a>
+                        <h3>
+                            <a href="information.jsp">Nombre Del Platillo</a>
+                        </h3>
 
-                            </div>
-                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-item">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </a>
+                        <h3>
+                            <a href="information.jsp">Nombre Del Platillo</a>
+                        </h3>
 
-                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-item">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </a>
+                        <h3>
+                            <a href="information.jsp">Nombre Del Platillo</a>
+                        </h3>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 portfolio-item">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </a>
+                        <h3>
+                            <a href="information.jsp">Nombre Del Platillo</a>
+                        </h3>
+
+                    </div>
+                    <div class="col-md-4 portfolio-item">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </a>
+                        <h3>
+                            <a href="information.jsp">Nombre Del Platillo</a>
+                        </h3>
+
+                    </div>
+                    <div class="col-md-4 portfolio-item">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </a>
+                        <h3>
+                            <a href="information.jsp">Nombre Del Platillo</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <%
+                }
+            %>
+
+
+            </div>
                         </div>
 
 
