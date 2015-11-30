@@ -232,7 +232,8 @@
         <script src="js/bootstrap.js"></script>
     <%
         } else {
-            
+            //If dish id is not especified, redirect to index page
+            response.sendRedirect("index.jsp");
         }
     %>
     </body>
