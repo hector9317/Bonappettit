@@ -3,6 +3,7 @@ package com.aht.dao.dish;
 import com.aht.domain.Dish;
 import com.aht.model.Counter;
 import com.aht.dao.counter.CounterDAOImpl;
+import org.neo4j.ogm.cypher.query.Pagination;
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,7 +16,7 @@ public class DishDAOImpl implements DishDAO {
 	private Session session;
 	
 	public DishDAOImpl() {
-		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "burros93");
+		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "n0m3l0s3");
 	}
 	//given:
 	//  Dish dish
@@ -56,6 +57,12 @@ public class DishDAOImpl implements DishDAO {
 		categories = new LinkedList<Dish>(session.loadAll(Dish.class));
 		return categories;
 	}
+
+    public LinkedList<Dish> retrieveSome(int page, int quantity){
+        LinkedList<Dish> dishes = null;
+        dishes = new LinkedList<Dish>(session.loadAll(Dish.class, new Pagination(page,quantity)));
+        return dishes;
+    }
 	
 	public Dish findByName(String name) {
 		Dish dish = session.queryForObject(Dish.class, "match (dish:Dish {name: {name}}) return dish", MapUtil.map("name",name));

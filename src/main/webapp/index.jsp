@@ -114,69 +114,45 @@
         <div class="content-wrapper">
             <%
                 DishDAOImpl ddi = new DishDAOImpl();
-                //LinkedList<Dish> dishes = ddi.retrieveAll();
+                int quantity = 6;
+                int pagination = Integer.parseInt(String.valueOf(Math.round(Math.random()* (842/6))));
+                LinkedList<Dish> dishes = ddi.retrieveSome(pagination,quantity);
             %>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <h4 class="page-head-line">Lo M&aacute;s Relevante</h4>
                     </div>
+                    <%
+                        for(int i=0; i < 3; i++){
+                            Dish d = dishes.get(i);
+                    %>
                     <div class="col-md-4 portfolio-item">
                         <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="<%= d.getName()%>">
                         </a>
                         <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
+                            <a href="information.jsp?dish=<%=d.getId()%>"><%= d.getName()%></a>
                         </h3>
 
                     </div>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                        </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-
-                    </div>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                        </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-
-                    </div>
+                    <% } %>
                 </div>
                 <div class="row">
+                    <%
+                        for(int i=3; i < 6; i++){
+                            Dish d = dishes.get(i);
+                    %>
                     <div class="col-md-4 portfolio-item">
                         <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="<%= d.getName()%>">
                         </a>
                         <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
+                            <a href="information.jsp?dish=<%=d.getId()%>"><%= d.getName()%></a>
                         </h3>
 
                     </div>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                        </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-
-                    </div>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                        </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-
-                    </div>
+                    <% } %>
                 </div>
             </div>
             <hr>
