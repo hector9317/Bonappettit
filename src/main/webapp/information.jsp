@@ -1,22 +1,33 @@
+<%@ page import="com.aht.dao.dish.DishDAOImpl" %>
+<%@ page import="com.aht.domain.Dish" %>
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="com.aht.domain.Category" %>
+<%@ page import="com.aht.dao.category.CategoryDAOImpl" %>
+<%@ page import="com.aht.api.config.Config" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="com.aht.api.engine.ItemRecommender" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="org.neo4j.ogm.session.result.Result" %>
+<%@ page import="java.util.Set" %>
 <!DOCTYPE html>
 <%
     if(request.getParameter("dish") != null) {
-        String dish_id = request.getParameter("dish");
+        long dishId = Long.parseLong(request.getParameter("dish"));
         int counter = 1;
         Cookie[] cookies = request.getCookies();
-        for(Cookie saved: cookies){
-            if(saved.getName().equals(dish_id)){
-                counter = Integer.parseInt(saved.getValue()) + 1;
-                saved.setMaxAge(0);
-                response.addCookie(saved);
+        Cookie cookie = null;
+        for(int i=0; i < cookies.length; i++){
+            cookie =  cookies[i];
+            if(cookie.getName().equals(dishId+"")){
+                counter = Integer.parseInt(cookies[i].getValue()) + 1;
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
             }
         }
-        Cookie cookie = new Cookie(dish_id, counter + "");
+        cookie = new Cookie(dishId+"", counter + "");
         response.addCookie(cookie);
-
-    } else {
-        //TODO: If dish is not especified, redirect to index page
-    }
 %>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -125,75 +136,86 @@
             </div>
         </section>
         <!-- MENU SECTION END-->
+
         <div class="content-wrapper">
             <div class="container">
+                <%
+                    DishDAOImpl ddi = new DishDAOImpl();
+                    Dish dish = ddi.retrieve(dishId);
+                    if(dish != null) {
+                %>
                 <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Nombre Del Platillo
-                    <small>Detalles</small>
-                </h1>
+                    <div class="col-lg-12">
+                        <h1 class="page-header"><%= dish.getName()%></h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <!-- Portfolio Item Row -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                    </div>
+
+                    <div class="col-md-4">
+                        <h3>Descripci&oacute;n</h3>
+                        <p><%= dish.getIngredients()%></p>
+                        <h3>Categorias</h3>
+                        <ul>
+                        <%
+                            Set<Category> categories = dish.getCategories();
+                            for (Category cat: categories) {
+                        %>
+                            <li><%= cat.getName()%></li>
+                        <%  } %>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <!-- Related Projects Row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">Platillos relacionados</h3>
+                    </div>
+                    <%
+                    Class.forName("org.neo4j.jdbc.Driver");
+                    try {
+                        Connection con = Config.connectToNeo4j("neo4j","n0m3l0s3");
+                        ItemRecommender ir = new ItemRecommender();
+                        ResultSet rs = ir.getRecommendationsForItem(dishId, 4, con);
+                        int i = 0;
+                        while (i < 4 && rs.next()) {
+                            Map<String, Object> res = (Map<String, Object>) rs.getObject("reco");
+                            Dish reco = ddi.findByName((String) res.get("name"));
+                    %>
+                    <div class="col-sm-3 col-xs-6">
+                        <a href="information.jsp?dish=<%= reco.getId()%>">
+                        <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                        <p><%= reco.getName()%></p>
+                        </a>
+                    </div>
+                    <%
+                        i++;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    %>
+                </div>
+                <% } else {
+                    //Delete cookie
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                %>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="page-header">No se encontró el platillo :(</h2>
+                    </div>
+                </div>
+                <% } %>
             </div>
         </div>
-        <!-- /.row -->
 
-        <!-- Portfolio Item Row -->
-        <div class="row">
-
-            <div class="col-md-8">
-                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-            </div>
-
-            <div class="col-md-4">
-                <h3>Huevos de la casa</h3>
-                <p>Dos huevos estrellados sobre una sincronizada con frijoles, bañados en salsa poblana con rajas y gratinados con queso manchego.</p>
-                <h3>Categorias</h3>
-                <ul>
-                    <li>Huevos</li>
-                    <li>Lacteos</li>
-                    <li>Salsas y guarniciones</li>
-                    <li>Primeros Platos</li>
-                    <li>Entradas</li>
-                </ul>
-            </div>
-
-        </div>
-        <!-- /.row -->
-
-        <!-- Related Projects Row -->
-        <div class="row">
-
-            <div class="col-lg-12">
-                <h3 class="page-header">Related Projects</h3>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-        </div>
-            </div>
-        </div>
-        
 
         <!-- CONTENT-WRAPPER SECTION END-->
         <footer>
@@ -208,6 +230,11 @@
         <script src="js/jquery-1.11.1.js"></script>
         <!-- BOOTSTRAP SCRIPTS  -->
         <script src="js/bootstrap.js"></script>
+    <%
+        } else {
+            
+        }
+    %>
     </body>
 </html>
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
