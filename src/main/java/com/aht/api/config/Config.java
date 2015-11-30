@@ -10,17 +10,4 @@ public class Config {
         Class.forName("org.neo4j.jdbc.Driver");
         return DriverManager.getConnection("jdbc:neo4j://localhost:7474/", username, password);
     }
-
-    public boolean createSimilarityDishes(Connection con) {
-        // Querying
-        try (Statement stmt = con.createStatement()) {
-            ResultSet rs = stmt.executeQuery("MATCH (d1:Dish)-[x:IS]->(c1:Category)<-[y:IS]-(d2:Dish) WITH  d1,d2,count(c1) as categories MERGE (d1)-[s:SAME_CATEGORIES]-(d2) SET s.similarity = categories;");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-
-    }
-
 }

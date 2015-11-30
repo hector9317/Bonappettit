@@ -7,13 +7,14 @@ import java.sql.*;
  */
 public class ItemRecommender {
 
-    public ResultSet getRecommendationsForItem(int itemID,int numberOfRecommendations, Connection con){
+    public ResultSet getRecommendationsForItem(long id,int numberOfRecommendations, Connection con){
         ResultSet rs = null;
         try(Statement stmt = con.createStatement()){
-            rs = stmt.executeQuery("MATCH    (d1:Dish {dishID:"+itemID+"})-[s:SAME_CATEGORIES]-(d2:Dish) "+
-                                    "WITH     d2, s.similarity AS sim " +
-                                    "ORDER BY sim DESC LIMIT "+numberOfRecommendations+" " +
-                                    "RETURN   d2.dishID AS ID, d2.name AS Neighbor, sim AS Similarity;");
+            rs = stmt.executeQuery("MATCH (d1:Dish)-[s:SAME_CATEGORIES]-(reco:Dish) "+
+                    "WHERE id(d1)="+id+" "+
+                    "WITH     reco, s.similarity AS sim " +
+                    "ORDER BY sim DESC LIMIT "+numberOfRecommendations+" " +
+                    "RETURN   reco");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -23,7 +24,7 @@ public class ItemRecommender {
     public ResultSet selectItemLike(String query, Connection con) throws SQLException {
         ResultSet rs = null;
         try(Statement stmt = con.createStatement()){
-            rs = stmt.executeQuery("MATCH (d:Dish) WHERE d.name =~ '.*"+query+".*' return d.dishID AS ID,d.name AS Name;");
+            rs = stmt.executeQuery("MATCH (d:Dish) WHERE d.name =~ '.*"+query+".*' return d");
         } catch (SQLException e) {
             e.printStackTrace();
         }
