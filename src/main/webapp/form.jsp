@@ -32,9 +32,9 @@
                     <br>
                         <div class="col-lg-5">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Buscar Platillo....">
+                                <input id="search-box" type="text" class="form-control" placeholder="Buscar Platillo....">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
+                                        <button class="btn btn-default" type="button" onclick="search()">
                                             <span class="glyphicon glyphicon-search"></span>
                                         </button>
                                     </span>
@@ -599,5 +599,11 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>    
 </body>
+<script>
+	function search(){
+		var searching = document.getElementById("search-box").value;
+		window.location = "results.jsp?search="+searching;
+	}
+</script>
 </html>
 <%@page contentType="text/html" pageEncoding="utf-8"%>

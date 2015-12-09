@@ -114,9 +114,9 @@
                         <br>
                         <div class="col-lg-5">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Buscar Platillo....">
+                                <input id="search-box" type="text" class="form-control" placeholder="Buscar Platillo....">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
+                                        <button class="btn btn-default" type="button" onclick="search()">
                                             <span class="glyphicon glyphicon-search"></span>
                                         </button>
                                     </span>
@@ -140,6 +140,7 @@
         <div class="content-wrapper">
             <div class="container">
                 <%
+                    String location = "var/";
                     DishDAOImpl ddi = new DishDAOImpl();
                     Dish dish = ddi.retrieve(dishId);
                     if(dish != null) {
@@ -154,7 +155,7 @@
                 <!-- Portfolio Item Row -->
                 <div class="row">
                     <div class="col-md-8">
-                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        <img class="img-responsive" src="<%=location+dish.getPicture().trim()%>" alt="<%= dish.getName()%>">
                     </div>
 
                     <div class="col-md-4">
@@ -190,7 +191,7 @@
                     %>
                     <div class="col-sm-3 col-xs-6">
                         <a href="information.jsp?dish=<%= reco.getId()%>">
-                        <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                        <img class="img-responsive portfolio-item" src="<%=location+reco.getPicture().trim()%>" alt="<%= reco.getName()%>">
                         <p><%= reco.getName()%></p>
                         </a>
                     </div>
@@ -237,5 +238,11 @@
         }
     %>
     </body>
+    <script>
+        function search(){
+            var searching = document.getElementById("search-box").value;
+            window.location = "results.jsp?search="+searching;
+        }
+    </script>
 </html>
     <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,6 +1,12 @@
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="com.aht.dao.dish.DishDAOImpl" %>
 <%@ page import="com.aht.domain.Dish" %>
+<%@ page import="sun.awt.image.ImageWatched" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="com.aht.api.engine.ItemRecommender" %>
+<%@ page import="com.aht.api.config.Config" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.Map" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -88,9 +94,9 @@
                         <br>
                             <div class="col-lg-5">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Buscar Platillo....">
+                                    <input id="search-box" type="text" class="form-control" placeholder="Buscar Platillo....">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">
+                                            <button class="btn btn-default" type="button" onclick="search()">
                                                 <span class="glyphicon glyphicon-search"></span>
                                             </button>
                                         </span>
@@ -117,6 +123,7 @@
                 int quantity = 6;
                 int pagination = Integer.parseInt(String.valueOf(Math.round(Math.random()* (842/6))));
                 LinkedList<Dish> dishes = ddi.retrieveSome(pagination,quantity);
+                String location = "var/";
             %>
             <div class="container">
                 <div class="row">
@@ -129,7 +136,7 @@
                     %>
                     <div class="col-md-4 portfolio-item">
                         <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="<%= d.getName()%>">
+                            <img class="img-responsive" src="<%=location+d.getPicture().trim()%>" alt="<%= d.getName()%>">
                         </a>
                         <h3>
                             <a href="information.jsp?dish=<%=d.getId()%>"><%= d.getName()%></a>
@@ -145,7 +152,7 @@
                     %>
                     <div class="col-md-4 portfolio-item">
                         <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="<%= d.getName()%>">
+                            <img class="img-responsive" src="<%=location+d.getPicture().trim()%>" alt="<%= d.getName()%>">
                         </a>
                         <h3>
                             <a href="information.jsp?dish=<%=d.getId()%>"><%= d.getName()%></a>
@@ -159,76 +166,69 @@
             <%
                 Cookie[] cookies = request.getCookies();
                 if(cookies != null && cookies.length > 1) {
+                    LinkedList<Long> ids= new LinkedList<Long>();
+                    LinkedList<Integer> visualisations= new LinkedList<Integer>();
+                    for(int i=0; i < cookies.length; i++){
+                        if(!cookies[i].getName().equals("JSESSIONID")){
+                            ids.add(Long.parseLong(cookies[i].getName()));
+                            visualisations.add(Integer.parseInt(cookies[i].getValue()));
+                        }
+                    }
+                    int numberOfRecommendations = 6;
+                    Class.forName("org.neo4j.jdbc.Driver");
+                    try {
+                        Connection con = Config.connectToNeo4j("neo4j","n0m3l0s3");
+                        ItemRecommender ir = new ItemRecommender();
+                        ResultSet rs = ir.getItemBasedRecommendations(ids, visualisations, numberOfRecommendations, con);
             %>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <h4 class="page-head-line">Recomendado para ti</h4>
                     </div>
+                    <%
+                        int i = 0;
+                        while (i < 3 && rs.next()) {
+                            Map<String, Object> res = (Map<String, Object>) rs.getObject("reco");
+                            Dish reco = ddi.findByName((String) res.get("name"));
+                    %>
                     <div class="col-md-4 portfolio-item">
                         <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                            <img class="img-responsive" src="<%=location+reco.getPicture().trim()%>" alt="<%= reco.getName()%>">
                         </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-
+                        <h3><a href="information.jsp?dish=<%= reco.getId()%>"><%= reco.getName()%></a></h3>
                     </div>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                        </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-
-                    </div>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                        </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-
-                    </div>
+                    <%
+                            i++;
+                        }
+                    %>
                 </div>
                 <div class="row">
+                    <%
+                        while (i < numberOfRecommendations && rs.next()) {
+                            Map<String, Object> res = (Map<String, Object>) rs.getObject("reco");
+                            Dish reco = ddi.findByName((String) res.get("name"));
+                    %>
                     <div class="col-md-4 portfolio-item">
                         <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                            <img class="img-responsive" src="<%=location+reco.getPicture().trim()%>" alt="<%= reco.getName()%>">
                         </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-
+                        <h3><a href="information.jsp?dish=<%= reco.getId()%>"><%= reco.getName()%></a></h3>
                     </div>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                        </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-
-                    </div>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                        </a>
-                        <h3>
-                            <a href="information.jsp">Nombre Del Platillo</a>
-                        </h3>
-                    </div>
+                    <%
+                            i++;
+                        }
+                    %>
                 </div>
             </div>
             <%
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             %>
-
-
             </div>
-                        </div>
+        </div>
 
 
                         <!-- CONTENT-WRAPPER SECTION END-->
@@ -245,4 +245,10 @@
                         <!-- BOOTSTRAP SCRIPTS  -->
                         <script src="js/bootstrap.js"></script>
                         </body>
+<script>
+    function search(){
+        var searching = document.getElementById("search-box").value;
+        window.location = "results.jsp?search="+searching
+    }
+</script>
 </html>
