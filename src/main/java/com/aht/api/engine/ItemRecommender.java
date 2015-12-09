@@ -1,6 +1,8 @@
 package com.aht.api.engine;
 
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by azu on 27/10/15.
@@ -21,10 +23,35 @@ public class ItemRecommender {
         return rs;
     }
 
-    public ResultSet selectItemLike(String query, Connection con) throws SQLException {
+    public ResultSet getItemBasedRecommendations(LinkedList<Long> ids, LinkedList<Integer> visualisations, int numberOfRecommendations, Connection con){
+        ResultSet rs = null;
+        int totalVisualisations = 0;
+        for(Integer v: visualisations){
+            totalVisualisations += v;
+        }
+        int[] quantity = new int[visualisations.size()];
+        for(int i=0; i < visualisations.size(); i++){
+            float percentage = 1 + visualisations.get(i) / totalVisualisations;
+            quantity[i] = Math.round(numberOfRecommendations * percentage);
+        }
+        String query = "MATCH (d1:Dish)-[s:SAME_CATEGORIES]-(reco:Dish) WHERE id(d1)="+ids.get(0)+" WITH d1,reco, s.similarity AS sim ORDER BY sim DESC LIMIT "+quantity[0]+" RETURN reco ";
+        if(visualisations.size() > 1){
+            for(int i=1; i < visualisations.size(); i++){
+                query += "UNION\n MATCH (d1:Dish)-[s:SAME_CATEGORIES]-(reco:Dish) WHERE id(d1)="+ids.get(i)+" WITH d1,reco, s.similarity AS sim ORDER BY sim DESC LIMIT "+quantity[i]+" RETURN reco ";
+            }
+        }
+        try(Statement stmt = con.createStatement()){
+            rs = stmt.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet selectItemLike(String query, int items, Connection con) throws SQLException {
         ResultSet rs = null;
         try(Statement stmt = con.createStatement()){
-            rs = stmt.executeQuery("MATCH (d:Dish) WHERE d.name =~ '.*"+query+".*' return d");
+            rs = stmt.executeQuery("MATCH (dish:Dish) WHERE dish.name =~ '(?i).*"+query+".*' return dish limit "+items+" ");
         } catch (SQLException e) {
             e.printStackTrace();
         }
