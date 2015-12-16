@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="java.util.Date"%>
 <%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
 <%@page import="com.aht.dao.dish.DishDAOImpl"%>
 <%@page import="com.aht.domain.Dish"%>
@@ -97,9 +96,9 @@
                                 <label for="InputName">Genero:</label>
                                 <div class="input-group">
 
-                                    <select id="listaDeshabilitada" class="form-control" name="genero"required>
-                                        <option value="1">Masculino</option>
-                                        <option value="2">Femenino</option>
+                                    <select id="listaDeshabilitada" class="form-control" name="nacionalidad" required>
+                                        <option value="1"></option>
+                                        <option value="2"></option>
                                         
                                     </select>
                                     <span class="input-group-addon"><span
@@ -123,45 +122,8 @@
                                 <label for="InputName">Nacionalidad :</label>
                                 <div class="input-group">
 
-                                    <select id="listaDeshabilitada" class="form-control" name="nacionalidad"required>
-                                        <option value="0">Alemania</option>
-                                        <option value="1">Argentina</option>
-                                        <option value="2">Australia</option>
-                                        <option value="3">Bélgica</option>
-                                        <option value="4">Brasil</option>
-                                        <option value="5">Canadá</option>
-                                        <option value="6">Chile</option>
-                                        <option value="7">China</option>
-                                        <option value="8">Colombia</option>
-                                        <option value="9">Corea del Norte</option>
-                                        <option value="10">Corea del Sur</option>
-                                        <option value="11">Costa Rica</option>
-                                        <option value="12">Croacia</option>
-                                        <option value="13">Ecuador</option>
-                                        <option value="14">España</option>
-                                        <option value="15">Estados Unidos</option>
-                                        <option value="16">Francia</option>
-                                        <option value="17">Grecia</option>
-                                        <option value="18">Guatemala</option>
-                                        <option value="19">Honduras</option>
-                                        <option value="20">Irlanda</option>
-                                        <option value="21">Italia</option>
-                                        <option value="22">Japón</option>
-                                        <option value="23">México</option>
-                                        <option value="24">Noruega</option>
-                                        <option value="25">Nueva Zelanda</option>
-                                        <option value="26">Panamá</option>
-                                        <option value="27">Paraguay</option>
-                                        <option value="28">Perú</option>
-                                        <option value="29">Portugal</option>
-                                        <option value="30">Rumanía</option>
-                                        <option value="31">Rusia</option>
-                                        <option value="32">Suecia</option>
-                                        <option value="33">Suiza</option>
-                                        <option value="34">Tailandia</option>
-                                        <option value="35">Turquía</option>
-                                        <option value="36">Uruguay</option>
-                                        <option value="37">Venezuela</option>
+                                    <select id="listaDeshabilitada" class="form-control" required>
+                                        
                                      </select>
                                     <span class="input-group-addon"><span
                                             class="glyphicon glyphicon-asterisk"></span></span>
@@ -181,7 +143,7 @@
                                 </div>
                                 <hr>
                                 <div class="form-group">
-                                    <label for="InputName">Contraseña:</label>
+                                    <label for="InputName">ContraseÃ±a:</label>
                                     <div class="input-group">
                                         <input type="password" class="form-control" name="password"
                                                id="InputName" placeholder="Agrega un Nombre" required>
@@ -189,22 +151,10 @@
                                                 class="glyphicon glyphicon-asterisk"></span></span>
                                     </div>
                                 </div>
-                               <%  
-                                   //guardar en la base de datos la fecha en que se registro el usuario
-                                //pero no se mostrara en la pagina
-                                 
-Date fecha=new Date(); 
-String sFecha = ""; 
-int iEntero = fecha.getDate(); 
-sFecha = String.valueOf(iEntero); 
-iEntero = fecha.getMonth(); 
-sFecha = sFecha + "/" + String.valueOf(iEntero); 
-iEntero = fecha.getYear() + 1900; 
-sFecha = sFecha + "/" + String.valueOf(iEntero); 
-
-out.print("<span class='style2'>La fecha actual es: </span>" + sFecha); 
-%>
-                               
+                                <input type="submit"
+                                       name="submit" id="submit" value="guardar"
+                                       class="btn btn-info pull-right">
+                            </div>
                     </form>
 
                 </div>
