@@ -1,4 +1,4 @@
-<%@ page import="java.util.LinkedList" %>
+<%@ page import="java.util.LinkedList" %>-
 <%@ page import="com.aht.dao.dish.DishDAOImpl" %>
 <%@ page import="com.aht.domain.Dish" %>
 <%@ page import="sun.awt.image.ImageWatched" %>
@@ -33,106 +33,47 @@
         <![endif]-->
     </head>
     <body>
-
-        <!-- HEADER END-->
         <div class="navbar navbar-inverse set-radius-zero">
             <div class="container">
+                <img src="img/bonappetit.png" style="width: 60px;padding-top:5px;padding-bottom: 5px;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">
-
-                        <img src="img/bonappetit.png" style="width: 65px;padding-left: 5px" />
-                    </a>
-
-                </div>
-
-                <div class="left-div">
-                    <div class="user-settings-wrapper" style="padding-left: 300px;">
-                        <ul class="nav">
-
-                            <li class="dropdown" >
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                                    <span class="glyphicon glyphicon-user" style="font-size: 25px;"></span>
-                                </a>
-                                <div class="dropdown-menu dropdown-settings">
-                                    <div class="media">
-
-                                    </div>
-                                    <form method="" action="">
-                                        <div class="form-group">
-                                            <label for="usuario">Usuario:</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" name="usuario"
-                                                       id="usuario" required>
-                                                    <span class="input-group-addon"><span
-                                                            class="glyphicon glyphicon-asterisk"></span></span>
-                                            </div>
-                                        </div>
-                                        <hr style="background-color: #000000">
-                                        
-                                        <div class="form-group">
-                                            <label for="password">Password:</label>
-                                            <div class="input-group">
-                                                <input type="password" class="form-control" name="password"
-                                                       id="password" required>
-                                                    <span class="input-group-addon"><span
-                                                            class="glyphicon glyphicon-asterisk"></span></span>
-                                            </div>
-                                        </div>
-                                        <center>
-                                        <input type="submit" name="submit" id="submit" value="Entrar" class="btn btn-info pull-right">
-                                        <a href="new_user.jsp" class="btn btn-danger btn-sm">Registrarme</a>
-                                        </center>    
-                                    </form>
-
-                                </div>
-                            </li>
-
-
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
         <!-- LOGO HEADER END-->
         <section class="menu-section">
-
             <div class="container">
-
                 <div class="row">
                     <div class="col-md-12">
-                        
-                            <div class="col-lg-5" style="padding-bottom: 5px;padding-top: 5px">
-                                <div class="input-group">
-                                    <input id="search-box" type="text" class="form-control" placeholder="Buscar Platillo....">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button" onclick="search()">
-                                                <span class="glyphicon glyphicon-search"></span>
-                                            </button>
-                                        </span>
-                                </div>
-                                
-
+                        <div class="col-lg-5" style="padding-top: 3px">
+                            <div class="input-group">
+                                <input id="search-box" type="text" class="form-control" placeholder="Buscar Platillo....">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" onclick="search()">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
                             </div>
-                            <div class="navbar-collapse collapse ">
-                                <!--  <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                     <li><a class="menu-top-active" href="index.jsp">Menu Principal</a></li>
-                                     <li><a href="form.jsp">Agregar</a></li>
- ________________________________________________________________________________________________________________________________________________________________ 
-                                     <li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li> 
-                                 </ul>-->
-                            </div>
+                        </div>
+                        <div class="navbar-collapse collapse ">
+                            <ul id="menu-top" class="nav navbar-nav navbar-right">
+                                <li><a class="menu-top-active" href="index.jsp">Menu Principal</a></li>
+                                <li><a href="perfil_user.jsp">Mi Perfil</a></li>
+                                <li><a href="modify_or_delete.jsp">Mis Platillos</a></li>
+                                <li><a href="#">Cerrar Sesi&oacute;n</a></li>
+                            </ul>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
         <!-- MENU SECTION END-->
-        <div class="content-wrapper">
+         <div class="content-wrapper">
             <%
                 DishDAOImpl ddi = new DishDAOImpl();
                 int quantity = 6;
@@ -161,7 +102,7 @@
                     <% } %>
             </div>
             <div class="row">
-               <%
+                    <%
                          for(int i=3; i < 6; i++){
                              Dish d = dishes.get(i);
                      %>
@@ -201,7 +142,7 @@
                     <div class="col-md-12">
                         <h4 class="page-head-line">Recomendado para ti</h4>
                     </div>
-                     <%
+                    <%
                         int i = 0;
                         while (i < 3 && rs.next()) {
                             Map<String, Object> res = (Map<String, Object>) rs.getObject("reco");
@@ -236,7 +177,7 @@
                     %>
                 </div>
             </div>
-            <%
+             <%
             } catch (Exception e){
                 e.printStackTrace();
             }

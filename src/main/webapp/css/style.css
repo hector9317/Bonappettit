@@ -73,9 +73,9 @@ header {
    LOGO SECTION STYLES
  ============================================================ */
 .left-div {
-    padding-left:500px;
-    margin-top: 40px;
-    margin-bottom: 30px;
+    padding-left: 80px;
+    margin-top: 35px;
+    margin-bottom: 25px;
 }
 
 .navbar-brand {
@@ -93,7 +93,7 @@ header {
     -moz-border-radius: 50%;
     height: 60px;
     width: 60px;
-    background-color: #FF4000;
+    background-color: #FE9A2E;
     color: #fff;
 }
 
@@ -112,7 +112,7 @@ header {
 
     .user-settings-wrapper .nav > li > a:hover,.user-settings-wrapper .nav > li > a:focus {
         text-decoration: none;
-        background-color: #000!important;
+        background-color: #DF3A01!important;
     }
 
     .user-settings-wrapper img {
@@ -135,7 +135,7 @@ header {
     }
 
     .user-settings-wrapper .media-heading {
-        padding-top: 10px;
+        padding-top: 5px;
     }
 
 /* MENU LINKS SECTION*/
@@ -162,7 +162,7 @@ header {
 }
 
 .menu-section .dropdown-menu > li > a:hover,.menu-section .dropdown-menu > li > a:focus {
-    background-color: #FF4000!important; //fondo menu
+    background-color: #fff!important; //fondo menu
 }
 
 .navbar-inverse {

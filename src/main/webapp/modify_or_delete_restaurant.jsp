@@ -21,7 +21,7 @@
     <body>
         <div class="navbar navbar-inverse set-radius-zero">
             <div class="container">
-                <img src="img/bonappetit.png" style="width: 90px;padding-top:5px;padding-bottom: 5px;">
+                <img src="img/bonappetit.png" style="width: 75px;padding-top:5px;padding-bottom: 5px;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -35,6 +35,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+                        
                         <div class="navbar-collapse collapse ">
                             <ul id="menu-top" class="nav navbar-nav navbar-right">
                                 <li><a href="index.jsp">Menu Principal</a></li>
@@ -52,7 +53,7 @@
                     <div class="row" >
                         <div class="col-lg-5">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Buscar Platillo....">
+                                <input type="text" class="form-control" placeholder="Buscar Usuario....">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button">
                                             <span class="glyphicon glyphicon-search"></span>
@@ -71,10 +72,9 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Nombre Platillo</th>
-                                            <th>Ingredientes</th>
-                                            <th>Categorias</th>
-                                            <th>Opciones</th>
+                                            <th>Nombre del Restaurante</th>
+                                            <th>Ubicaci&oacute;n</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -103,7 +103,7 @@
 											
 											out.println("<td class='options'>");
 												out.println("<a href='form.jsp?id=" + dish.getId() + "'><button type='submit' class='btn btn-info'>Modificar</button></a>");
-												out.println("<a href='delete.jsp?id=" + dish.getId() + "'> <button type='submit' class='btn btn-danger'>Eliminar</button></a>");												
+												out.println("<a href='edit_user.jsp?id=" + dish.getId() + "'> <button type='submit' class='btn btn-danger'>Eliminar</button></a>");												
 											out.println("</td>");
 										out.println("</tr>");
 									}
@@ -134,10 +134,4 @@
         <!-- BOOTSTRAP SCRIPTS  -->
         <script src="js/bootstrap.js"></script>
     </body>
-    <script>
-        function search(){
-            var searching = document.getElementById("search-box").value;
-            window.location = "results.jsp?search="+searching;
-        }
-    </script>
 </html>

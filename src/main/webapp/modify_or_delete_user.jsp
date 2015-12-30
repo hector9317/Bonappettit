@@ -21,7 +21,7 @@
     <body>
         <div class="navbar navbar-inverse set-radius-zero">
             <div class="container">
-                <img src="img/bonappetit.png" style="width: 90px;padding-top:5px;padding-bottom: 5px;">
+                <img src="img/bonappetit.png" style="width: 75px;padding-top:5px;padding-bottom: 5px;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -35,17 +35,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <br>
-                        <div class="col-lg-5">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Buscar Platillo....">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </button>
-                                    </span>
-                            </div>
-                        </div>
+                        
                         <div class="navbar-collapse collapse ">
                             <ul id="menu-top" class="nav navbar-nav navbar-right">
                                 <li><a href="index.jsp">Menu Principal</a></li>
@@ -63,7 +53,7 @@
                     <div class="row" >
                         <div class="col-lg-5">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Buscar Platillo....">
+                                <input type="text" class="form-control" placeholder="Buscar Usuario....">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button">
                                             <span class="glyphicon glyphicon-search"></span>

@@ -16,7 +16,7 @@
     <body>
         <div class="navbar navbar-inverse set-radius-zero">
             <div class="container">
-                <img src="img/bonappetit.png" style="width: 90px;padding-top:5px;padding-bottom: 5px;">
+                <img src="img/bonappetit.png" style="width: 75px;padding-top:5px;padding-bottom: 5px;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -29,8 +29,16 @@
         <section class="menu-section">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <br>
+                    <div >
+                        
+                        <div class="navbar-collapse collapse ">
+                            <ul id="menu-top" class="nav navbar-nav navbar-right">
+                                <li><a href="index.jsp">Menu Principal</a></li>
+                                <li><a class="menu-top-active" href="perfil_user.jsp">Mi Perfil</a></li>
+                                <li><a href="modify_or_delete.jsp">Mis Platillos</a></li>
+                                <li><a href="#">Cerrar Sesi&oacute;n</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -172,7 +180,7 @@
                                                 class="glyphicon glyphicon-asterisk"></span></span>
                                     </div>
                                 </div>
-                               <%  
+                             <%--  <%  
                                    //guardar en la base de datos la fecha en que se registro el usuario
                                 //pero no se mostrara en la pagina
                                  
@@ -186,8 +194,10 @@ iEntero = fecha.getYear() + 1900;
 sFecha = sFecha + "/" + String.valueOf(iEntero); 
 
 out.print("<span class='style2'>La fecha actual es: </span>" + sFecha); 
-%>
+%>--%>
                                
+                    <input type="submit" name="submit" id="submit" value="Guardar" class="btn btn-info pull-right">
+                    <input type="submit" name="submit" id="submit" value="Modificar" class="btn btn-info pull-left">
                     </form>
 
                 </div>

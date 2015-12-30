@@ -37,9 +37,10 @@
                     <div class="col-md-12">
                         <div class="navbar-collapse collapse ">
                             <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                <li><a href="index.jsp">Menu Principal</a></li>
-                                <li><a href="add.jsp">Agregar</a></li>
-                                <li><a class="menu-top-active"   href="modify_or_delete.jsp">Modificar o Eliminar</a></li>
+                                <li><a href="modify_or_delete_user.jsp">Usuarios</a></li>
+                                <li><a href="modify_or_delete.jsp">Platillos</a></li>
+                                <li><a href="modify_or_delete_restaurant.jsp">Restaurantes</a></li>
+                                <li><a href="restaurantes.jsp">Cerrar Sesi&oacute;n</a></li>
                             </ul>
                         </div>
                     </div>
@@ -48,7 +49,7 @@
         </section>
         <div class="content-wrapper">
             <div class="container">
-                <div class="row">
+                <!--<div class="row">
                     <div class="row" >
                         <div class="col-lg-5">
                             <div class="input-group">
@@ -71,14 +72,14 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Nombre Platillo</th>
-                                            <th>Ingredientes</th>
-                                            <th>Categorias</th>
-                                            <th>Opciones</th>
+                                            <th>Nombre del Usuario</th>
+                                            <th>Nacionalidad</th>
+                                            <th>Correo electronico</th>
+                                            <th>Fecha de registro</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-								<%
+                                        <%--				<%
 								DishDAOImpl ddi = new DishDAOImpl();
 								LinkedList<Dish> dishes = ddi.retrieveAll();
 								
@@ -103,17 +104,17 @@
 											
 											out.println("<td class='options'>");
 												out.println("<a href='form.jsp?id=" + dish.getId() + "'><button type='submit' class='btn btn-info'>Modificar</button></a>");
-												out.println("<a href='delete.jsp?id=" + dish.getId() + "'> <button type='submit' class='btn btn-danger'>Eliminar</button></a>");												
+												out.println("<a href='edit_user.jsp?id=" + dish.getId() + "'> <button type='submit' class='btn btn-danger'>Eliminar</button></a>");												
 											out.println("</td>");
 										out.println("</tr>");
 									}
 								}
-								%>
+								%>--%>
                                     </tbody>
                                 </table>
                             </div>
                         </div> 
-                </div>
+                </div>-->
             </div>
         </div>        
         <!-- CONTENT-WRAPPER SECTION END-->
@@ -134,10 +135,4 @@
         <!-- BOOTSTRAP SCRIPTS  -->
         <script src="js/bootstrap.js"></script>
     </body>
-    <script>
-        function search(){
-            var searching = document.getElementById("search-box").value;
-            window.location = "results.jsp?search="+searching;
-        }
-    </script>
 </html>
