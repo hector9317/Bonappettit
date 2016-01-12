@@ -23,7 +23,7 @@ public class Data extends HttpServlet {
 			json.put("id", id);
 			
 			json.put("name", dish.getName());
-			json.put("ingredients", dish.getIngredients());
+			json.put("description", dish.getDescription());
 			json.put("categories", dish.getCategoriesNames());
 			response.setContentType("application/json");
 			response.getWriter().write(json.toString());

@@ -13,7 +13,7 @@ public class Dish {
 	private Long id;
 	private int dishID;
 	private String name;
-	private String ingredients;
+	private String description;
     private String picture;
 	@Relationship(type = "IS", direction = Relationship.OUTGOING)
     private Set<Category> categories;
@@ -38,12 +38,12 @@ public class Dish {
         this.name = name;
     }
 
-    public String getIngredients() {
-        return ingredients;
+    public String getDescription() {
+        return description;
     }
 
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
+    public void setIngredients(String description) {
+        this.description = description;
     }
 
     public Set<Category> getCategories() {
@@ -107,6 +107,6 @@ public class Dish {
 
     @Override
     public String toString() {
-        return "id: " + id + " name: " + name + " ingredients: " + ingredients + " dishID: " + dishID;
+        return "id: " + id + " name: " + name + " description: " + description + " dishID: " + dishID;
     }
 }

@@ -160,7 +160,7 @@
 
                     <div class="col-md-4">
                         <h3>Descripci&oacute;n</h3>
-                        <p><%= dish.getIngredients()%></p>
+                        <p><%= dish.getDescription()%></p>
                         <h3>Categorias</h3>
                         <ul>
                         <%

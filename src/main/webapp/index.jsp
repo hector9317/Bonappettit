@@ -64,21 +64,19 @@
                                     </div>
                                     <form method="" action="">
                                         <div class="form-group">
-                                            <label for="usuario">Usuario:</label>
+                                            <!--label for="usuario">Usuario:</label-->
                                             <div class="input-group">
                                                 <input type="text" class="form-control" name="usuario"
-                                                       id="usuario" required>
+                                                       id="usuario" placeholder="Usuario" required>
                                                     <span class="input-group-addon"><span
                                                             class="glyphicon glyphicon-asterisk"></span></span>
                                             </div>
                                         </div>
-                                        <hr style="background-color: #000000">
-                                        
                                         <div class="form-group">
-                                            <label for="password">Password:</label>
+                                            <!-- label for="password">Password:</label-->
                                             <div class="input-group">
                                                 <input type="password" class="form-control" name="password"
-                                                       id="password" required>
+                                                       id="password" placeholder="Contrase&nacute;a" required>
                                                     <span class="input-group-addon"><span
                                                             class="glyphicon glyphicon-asterisk"></span></span>
                                             </div>
@@ -137,10 +135,12 @@
                 DishDAOImpl ddi = new DishDAOImpl();
                 int quantity = 6;
                 int pagination = Integer.parseInt(String.valueOf(Math.round(Math.random()* (842/6))));
-                LinkedList<Dish> dishes = ddi.retrieveSome(pagination,quantity);
+                LinkedList<Dish> dishes;
+                dishes = ddi.retrieveSome(pagination,quantity);
                 String location = "var/";
             %>
         <div class="container">
+            <% try {%>
             <div class="row">
                 <div class="col-md-12">
                     <h4 class="page-head-line">Lo M&aacute;s Relevante</h4>
@@ -176,6 +176,9 @@
                     </div>
                     <% } %>
             </div>
+            <% } catch(Exception e){
+                e.printStackTrace();
+            } %>
         </div>
         <hr>
             <%
@@ -260,10 +263,10 @@
             <!-- BOOTSTRAP SCRIPTS  -->
             <script src="js/bootstrap.js"></script>
     </body>
-    <!--<script>
+    <script>
         function search(){
             var searching = document.getElementById("search-box").value;
             window.location = "results.jsp?search="+searching
         }
-    </script>-->
+    </script>
 </html>
