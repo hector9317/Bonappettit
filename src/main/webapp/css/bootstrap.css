@@ -3413,17 +3413,17 @@ tbody.collapse.in {
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  right: 0;
+  right: 5px;
   z-index: 1000;
   display: none;
-  float:right;
+  float:left;
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0;
-  font-size: 14px;
+  font-size: 12px;
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: #F2F2F2;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #ccc;
@@ -3437,7 +3437,7 @@ tbody.collapse.in {
   left: 0;
 }
 .dropdown-menu .divider {
-  height: 1px;
+  height: 2px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;

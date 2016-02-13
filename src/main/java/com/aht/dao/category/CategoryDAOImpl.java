@@ -15,7 +15,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	private Session session;
 	
 	public CategoryDAOImpl() {
-		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "burros93");
+		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "n0m3l0s3");
 	}
 	
 	public void create(Category category) {
