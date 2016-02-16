@@ -42,7 +42,7 @@ public class Dish {
         return description;
     }
 
-    public void setIngredients(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

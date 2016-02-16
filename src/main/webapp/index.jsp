@@ -1,272 +1,120 @@
-<%@ page import="java.util.LinkedList" %>
-<%@ page import="com.aht.dao.dish.DishDAOImpl" %>
-<%@ page import="com.aht.domain.Dish" %>
-<%@ page import="sun.awt.image.ImageWatched" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="com.aht.api.engine.ItemRecommender" %>
-<%@ page import="com.aht.api.config.Config" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.Map" %>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <!--[if IE]>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-            <![endif]-->
-        <title>Bonappettit</title>
-        <!-- BOOTSTRAP CORE STYLE  -->
-        <link href="css/bootstrap.css" rel="stylesheet" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-        <!-- FONT AWESOME ICONS  -->
-        <link href="css/font-awesome.css" rel="stylesheet" />
-        <!-- CUSTOM STYLE  -->
-        <link href="css/style.css" rel="stylesheet" />
-        <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
+<%@page import="java.util.Map"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.aht.api.engine.ItemRecommender"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="com.aht.api.config.Config"%>
+<%@page import="com.aht.domain.Dish"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.aht.dao.dish.DishDAOImpl"%>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Elementos de prueba</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class = "navbar-header">
+				<a class="navbar-brand" href="#">Bonappettit</a>
+				<div class="contenedorSession">
+					<div class="dropdown-toggle userContainer" data-toggle="collapse" data-target="#formularioLogin">
+						<span class="glyphicon glyphicon-user" aria-hidden="false"></span>
+					</div>
+					<div id="formularioLogin" class="collapse container">
+						<input type="text" class="form-control" placeholder="Usuario" />
+						<input type="password" class="form-control"  placeholder="Contrase&ntilde;a" />
+						<button type="submit" class="btn btn-info botonSubmit">Iniciar sesi&oacute;n</button>
+						<button type="submit" class="btn btn-danger botonSubmit">Resgistrar</button>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="barrita">
+			<form role="search">
+				<div class="form-group">
+					<input type="text" class="form-control searchInput" placeholder="Estoy buscando ..." />
+					<button type="submit" class="btn btn-default">
+						<span class="glyphicon glyphicon-search posicion" aria-hidden="false"></span>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="container posicion">
+			<h4 class="page-head-line">LO M&Aacute;S RELEVANTE</h4>
+		<%
+			int quantity = 6;
+			LinkedList<Dish> dishes = null;
+			DishDAOImpl ddi = new DishDAOImpl();
+			int pagination = Integer.parseInt(String.valueOf(Math.round(Math.random() * (842 / 6))));
+			dishes = ddi.retrieveSome(pagination, quantity);
+			String location = "var/";
+		%>
+			<div class="container-fluid">
+				<div class="row">
+				<%
+					if(dishes != null) {
+						for(int i = 0; i < 3; i++) {
+							out.println("<div class='col-xs-12 col-sm-6 col-md-4 col-lg-4 posicion'>");
+								out.println("<img src='var/" + dishes.get(i).getPicture() + "' class='img-responsive'>");
+								out.println("<a href='information.jsp?dish=" + dishes.get(i).getId() + "'><h3>" + dishes.get(i).getName() + "</h3></a>");
+							out.println("</div>");
+						}
+					}
+				%>
+				</div>
+			</div>
+			<hr>
 
-        <!-- HEADER END-->
-        <div class="navbar navbar-inverse set-radius-zero">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-
-                        <img src="img/bonappetit.png" style="width: 65px;padding-left: 5px" />
-                    </a>
-
-                </div>
-
-                <div class="left-div">
-                    <div class="user-settings-wrapper" style="padding-left: 300px;">
-                        <ul class="nav">
-
-                            <li class="dropdown" >
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                                    <span class="glyphicon glyphicon-user" style="font-size: 25px;"></span>
-                                </a>
-                                <div class="dropdown-menu dropdown-settings">
-                                    <div class="media">
-
-                                    </div>
-                                    <form method="" action="">
-                                        <div class="form-group">
-                                            <!--label for="usuario">Usuario:</label-->
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" name="usuario"
-                                                       id="usuario" placeholder="Usuario" required>
-                                                    <span class="input-group-addon"><span
-                                                            class="glyphicon glyphicon-asterisk"></span></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <!-- label for="password">Password:</label-->
-                                            <div class="input-group">
-                                                <input type="password" class="form-control" name="password"
-                                                       id="password" placeholder="Contrase&nacute;a" required>
-                                                    <span class="input-group-addon"><span
-                                                            class="glyphicon glyphicon-asterisk"></span></span>
-                                            </div>
-                                        </div>
-                                        <center>
-                                        <input type="submit" name="submit" id="submit" value="Entrar" class="btn btn-info pull-right">
-                                        <a href="new_user.jsp" class="btn btn-danger btn-sm">Registrarme</a>
-                                        </center>    
-                                    </form>
-
-                                </div>
-                            </li>
-
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- LOGO HEADER END-->
-        <section class="menu-section">
-
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        
-                            <div class="col-lg-5" style="padding-bottom: 5px;padding-top: 5px">
-                                <div class="input-group">
-                                    <input id="search-box" type="text" class="form-control" placeholder="Buscar Platillo....">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button" onclick="search()">
-                                                <span class="glyphicon glyphicon-search"></span>
-                                            </button>
-                                        </span>
-                                </div>
-                                
-
-                            </div>
-                            <div class="navbar-collapse collapse ">
-                                <!--  <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                     <li><a class="menu-top-active" href="index.jsp">Menu Principal</a></li>
-                                     <li><a href="form.jsp">Agregar</a></li>
- ________________________________________________________________________________________________________________________________________________________________ 
-                                     <li><a href="modify_or_delete.jsp">Modificar o Eliminar</a></li> 
-                                 </ul>-->
-                            </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <!-- MENU SECTION END-->
-        <div class="content-wrapper">
-            <%
-                DishDAOImpl ddi = new DishDAOImpl();
-                int quantity = 6;
-                int pagination = Integer.parseInt(String.valueOf(Math.round(Math.random()* (842/6))));
-                LinkedList<Dish> dishes;
-                dishes = ddi.retrieveSome(pagination,quantity);
-                String location = "var/";
-            %>
-        <div class="container">
-            <% try {%>
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="page-head-line">Lo M&aacute;s Relevante</h4>
-                </div>
-                <%
-                    for(int i=0; i < 3; i++){
-                        Dish d = dishes.get(i);
-                %>
-                <div class="col-md-4 portfolio-item">
-                     <a href="#">
-                         <img class="img-responsive" src="<%=location+d.getPicture().trim()%>" alt="<%= d.getName()%>">
-                     </a>
-                     <h3>
-                         <a href="information.jsp?dish=<%=d.getId()%>"><%= d.getName()%></a>
-                     </h3>
-
-                    </div>
-                    <% } %>
-            </div>
-            <div class="row">
-               <%
-                         for(int i=3; i < 6; i++){
-                             Dish d = dishes.get(i);
-                     %>
-                <div class="col-md-4 portfolio-item">
-                     <a href="#">
-                         <img class="img-responsive" src="<%=location+d.getPicture().trim()%>" alt="<%= d.getName()%>">
-                     </a>
-                     <h3>
-                         <a href="information.jsp?dish=<%=d.getId()%>"><%= d.getName()%></a>
-                     </h3>
-
-                    </div>
-                    <% } %>
-            </div>
-            <% } catch(Exception e){
-                e.printStackTrace();
-            } %>
-        </div>
-        <hr>
-            <%
-            Cookie[] cookies = request.getCookies();
-            if(cookies != null && cookies.length > 1) {
-                LinkedList<Long> ids= new LinkedList<Long>();
-                LinkedList<Integer> visualisations= new LinkedList<Integer>();
-                for(int i=0; i < cookies.length; i++){
-                    if(!cookies[i].getName().equals("JSESSIONID")){
-                        ids.add(Long.parseLong(cookies[i].getName()));
-                        visualisations.add(Integer.parseInt(cookies[i].getValue()));
-                    }
-                }
-                int numberOfRecommendations = 6;
-                Class.forName("org.neo4j.jdbc.Driver");
-                try {
-                    Connection con = Config.connectToNeo4j("neo4j","n0m3l0s3");
-                    ItemRecommender ir = new ItemRecommender();
-                    ResultSet rs = ir.getItemBasedRecommendations(ids, visualisations, numberOfRecommendations, con);
-        %> 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4 class="page-head-line">Recomendado para ti</h4>
-                    </div>
-                     <%
-                        int i = 0;
-                        while (i < 3 && rs.next()) {
-                            Map<String, Object> res = (Map<String, Object>) rs.getObject("reco");
-                            Dish reco = ddi.findByName((String) res.get("name"));
-                    %>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="<%=location+reco.getPicture().trim()%>" alt="<%= reco.getName()%>">
-                        </a>
-                        <h3><a href="information.jsp?dish=<%= reco.getId()%>"><%= reco.getName()%></a></h3>
-                    </div>-->
-                     <%
-                        i++;
-                    }
-                %>
-                </div>
-                <div class="row">
-                     <%
-                        while (i < numberOfRecommendations && rs.next()) {
-                            Map<String, Object> res = (Map<String, Object>) rs.getObject("reco");
-                            Dish reco = ddi.findByName((String) res.get("name"));
-                    %>
-                    <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="<%=location+reco.getPicture().trim()%>" alt="<%= reco.getName()%>">
-                        </a>
-                        <h3><a href="information.jsp?dish=<%= reco.getId()%>"><%= reco.getName()%></a></h3>
-                    </div>
-                    <%
-                            i++;
-                        }
-                    %>
-                </div>
-            </div>
-            <%
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-    %>
-            </div>
-            </div>
-
-
-            <!-- CONTENT-WRAPPER SECTION END-->
-            <footer>
-                <div class="container">
-                    <div class="row">
-                    </div>
-                </div>
-            </footer>
-            <!-- FOOTER SECTION END-->
-            <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-            <!-- CORE JQUERY SCRIPTS -->
-            <script src="js/jquery-1.11.1.js"></script>
-            <!-- BOOTSTRAP SCRIPTS  -->
-            <script src="js/bootstrap.js"></script>
-    </body>
-    <script>
-        function search(){
-            var searching = document.getElementById("search-box").value;
-            window.location = "results.jsp?search="+searching
-        }
-    </script>
+		<%
+		int numberOfRecommendations = 6;
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null && cookies.length > 1) {
+			LinkedList<Long> ids = new LinkedList<Long>();
+			LinkedList<Integer> visualisations = new LinkedList<Integer>();
+			for (int i = 0; i < cookies.length; i++) {
+				if(!cookies[i].getName().equals("JSESSIONID")) {
+					ids.add(Long.parseLong(cookies[i].getName()));
+					visualisations.add(Integer.parseInt(cookies[i].getValue()));
+				}
+			}
+			Class.forName("org.neo4j.jdbc.Driver");
+			try {
+				Connection connection = Config.connectToNeo4j("neo4j", "burros93");
+				ItemRecommender item = new ItemRecommender();
+				ResultSet result = item.getItemBasedRecommendations(ids, visualisations, numberOfRecommendations, connection);		
+		%>
+			<h4 class="page-head-line">RECOMENDADO PARA TI</h4>
+			
+		<%
+				int i = 0;
+				while(i < 3 && result.next()) {
+					Map<String, Object> res = (Map<String, Object>) result.getObject("reco");
+					Dish recomendacion = ddi.findByName((String) res.get("name"));
+		%>
+			<div class="container-fluid">
+				<div class="row">
+				<%
+					out.println("<div class='col-xs-12 col-sm-6 col-md-4 col-lg-4 posicion'>");
+						out.println("<img src='var/" + recomendacion.getPicture() + "' class='img-responsive'>");
+						out.println("<a href='information.jsp?dish=" +  recomendacion.getId() + "'><h3>" + recomendacion.getName() + "</h3></a>");		
+					out.println("</div>");
+				%>
+				</div>
+			</div>
+		<%
+					i++;
+				}
+			} catch(Exception exception) {}
+			
+		}
+		%>
+		</div>
+		<script src="js/jquery-2.2.0.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/collapse.js"></script>
+	</body>
 </html>

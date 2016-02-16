@@ -1,9 +1,171 @@
-﻿
-/* =============================================================
-   GENERAL STYLES
- ============================================================ */
+﻿.navbar {
+    height: 52px;
+}
 
-@import url(http://fonts.googleapis.com/css?family=Roboto); /* FREE GOOGLE FONT */
+.navbar-header: {
+    height: 54px;
+}
+
+.navbar-brand {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.contenedorSession {
+    width: 65%;
+    height: 54px;
+    float: right;
+}
+
+@media ( max-width : 320px) {
+    .contenedorSession {
+        width: 45%;
+    }
+}
+
+.userContainer {
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    float: right;
+    display: block;
+    margin-top: 5px;
+    padding: 9px 11px;
+    margin-right: 10%;
+    border-radius: 50%;
+    position: relative;
+    -moz-border-radius: 50%;
+    background-color: #fe9a2e;
+    -webkit-border-radius: 50%;
+}
+
+.userContainer:hover {
+    background: #df3a01;
+}
+
+.glyphicon-user {
+    font-size: 22px;
+}
+
+@media ( min-width : 768px) {
+    .userContainer {
+        padding: 7px 11px;
+    }
+}
+
+#formularioLogin {
+    width: 100%;
+    float: right;
+    height: auto;
+    margin-top: 5px;
+    background: #fe9a2e;
+}
+
+input {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.botonSubmit {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.barrita {
+    height: auto;
+    margin-top: -20px;
+    background: #373737;
+}
+
+.form-group {
+    width: 78%;
+    height: auto;
+    padding: 0px 0% 0px 2%;
+}
+
+.searchInput {
+    width: 70%;
+    height: 30px;
+    margin-right: 0px;
+    display: inline-block;
+}
+
+.btn-default {
+    width: 40px;
+    height: 30px;
+    margin-left: 0px;
+    display: inline-block;
+}
+
+.posicion {
+    position: static;
+}
+
+.page-head-line {
+    color: #f0677c;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0677c;
+}
+
+h3 {
+	/*color: #8CC1E9;*/
+	color: #5cb3c0;
+	font-weight: bold;
+	margin-bottom: 20px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+h4 {
+	/*color: #8CC1E9;*/
+	color: #5cb3c0;
+	margin-top: 5px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.top20 {
+	color: #f0677c;
+	margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0677c;
+}
+
+.top0 {
+	color: #f0677c;
+	margin-top: 0px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0677c;
+}
+
+
+.descripcion {
+	color: #333;
+	font-size: 14px;
+	text-align: justify;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.noLine {
+	border: none;
+}
+
+.campoTexto {
+	display: inline-block;
+}
+
+.red {
+	margin-top: -5px;
+	color: #f0677c;
+}
+
+
+/*@import url(http://fonts.googleapis.com/css?family=Roboto); 
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -58,9 +220,7 @@ background-color:#F0677C;
 -webkit-border-radius:50%;
     -moz-border-radius:50%;
 }
-/* =============================================================
-   HEADER SECTION STYLES
- ============================================================ */
+
 header {
     background-color:orange;
     color: #fff;
@@ -68,10 +228,6 @@ header {
     text-align: right;
 }
 
-
-/* =============================================================
-   LOGO SECTION STYLES
- ============================================================ */
 .left-div {
     padding-left: 80px;
     margin-top: 35px;
@@ -83,7 +239,6 @@ header {
     padding-top: 30px;
 }
 
-/* USER SETTINGS DIV */
 .user-settings-wrapper .nav > li > a {
     position: relative;
     display: block;
@@ -138,8 +293,6 @@ header {
         padding-top: 5px;
     }
 
-/* MENU LINKS SECTION*/
-
 .menu-section {
     background-color: #3D3D3D;
     padding-left: 10px;
@@ -178,9 +331,6 @@ header {
 .navbar {
     margin-bottom: 0px;
 }
-/* =============================================================
-   FOOTER SECTION STYLES
- ============================================================ */
 footer {
     padding: 10px;
     color: #fff;
@@ -192,12 +342,6 @@ footer {
         color: #fff;
         text-decoration: none;
     }
-
-/*==============================================
-    DASHBOARD  STYLES    
- =============================================*/
-
-/* DASHBOARD ICONS */
 
 .bk-clr-one {
     background-color: #B9B739;
@@ -240,8 +384,6 @@ footer {
         height: 2px;
     }
 
-/* NOTICE BOARD */
-
 
 .notice-board .panel {
     border-radius: 0px;
@@ -270,7 +412,6 @@ footer {
         color: #000;
     }
 
-/* SOCIAL BUTTONS */
 .btn-social {
     color: white;
     opacity: 0.8;
@@ -331,3 +472,4 @@ footer {
 	width: 20%;
 }
 
+*/
