@@ -1,11 +1,55 @@
 <!DOCTYPE html>
-<%@page import="java.util.Date"%>
-<%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
-<%@page import="com.aht.dao.dish.DishDAOImpl"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.aht.api.engine.ItemRecommender"%>
+<%@page import="com.aht.api.config.Config"%>
+<%@page import="com.aht.domain.Category"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.util.Set"%>
 <%@page import="com.aht.domain.Dish"%>
+<%@page import="com.aht.dao.dish.DishDAOImpl"%>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Bonappettit</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class = "navbar-header">
+				<a class="navbar-brand" href="#">Bonappettit</a>
+			</div>
+		</nav>
+		<div class="container">
+			<h4 class="red">Favor de llenar todos los campos</h4>
+			<form role="form">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="class='col-xs-6 col-sm-4 col-md-4 col-lg-4 posicion">
+							<input type="text" id="nombre" name="nombre" class="form-control campoTexto" placeholder="Ingrese su nombre" required="required">
+						</div>
+						<div class="class='col-xs-6 col-sm-4 col-md-4 col-lg-4 posicion">
+							<input type="text" id="paterno" name="paterno" class="form-control campoTexto" placeholder="Ingrese su apellido paterno" required="required">
+						</div>
+						<div class="class='col-xs-6 col-sm-4 col-md-4 col-lg-4 posicion">
+							<input type="text" id="materno" name="materno" class="form-control campoTexto" placeholder="Ingrese su apellido materno" required="required">
+						</div>
+					</div>
+				</div>						
+			</form>
+		</div>
+	</body>
+</html>
+
+
+
+<!--
+<!DOCTYPE html>
 <html>
     <head>
-        <!--  <meta charset="utf-8" />-->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <title>Bonappettit</title>
         <link href="css/bootstrap.css" rel="stylesheet" />
@@ -172,7 +216,7 @@
                                                 class="glyphicon glyphicon-asterisk"></span></span>
                                     </div>
                                 </div>
-                               <%  
+                               <  
                                    //guardar en la base de datos la fecha en que se registro el usuario
                                 //pero no se mostrara en la pagina
                                  
@@ -194,7 +238,6 @@ out.print("<span class='style2'>La fecha actual es: </span>" + sFecha);
             </div>
         </div>
         </div>
-        <!-- CONTENT-WRAPPER SECTION END-->
         <footer>
             <div class="container">
                 <div class="row">
@@ -210,4 +253,7 @@ out.print("<span class='style2'>La fecha actual es: </span>" + sFecha);
         <script src="js/script.js"></script>    
     </body>
 </html>
-<%@page contentType="text/html" pageEncoding="utf-8"%>
+<page contentType="text/html" pageEncoding="utf-8"%>
+-->
+
+
