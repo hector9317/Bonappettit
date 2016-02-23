@@ -1,0 +1,48 @@
+﻿body {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.navbar {
+    height: 52px;
+}
+
+.navbar-header: {
+    height: 54px;
+}
+
+.navbar-brand {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.titulo {
+	color: #f0677c;
+	margin-top: -10px;
+	font-weight: bold;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.row {
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-bottom: 0px;
+}
+
+.divForLabel {
+	padding-bottom: 0px;
+}
+
+label {
+	color: #5cb3c0;
+}
+
+.button {
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+textarea {
+	resize: none;
+}

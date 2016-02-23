@@ -1,10 +1,10 @@
 <!DOCTYPE html>
+<%@page pageEncoding="utf-8" %>
+<%@page contentType="text/html" %>
 <%@page import="com.aht.domain.Dish"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
 <%@page import="com.aht.dao.dish.DishDAOImpl"%>
-<%@page contentType="text/html" %>
-<%@page pageEncoding="utf-8" %>
+<%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -94,7 +94,7 @@
 											out.println("</td>");
 											
 											out.println("<td>");
-												out.println(dish.getIngredients().replace(" ", ", "));
+												out.println(dish.getDescription().replace(" ", ", "));
 											out.println("</td>");
 											
 											out.println("<td>");
@@ -116,7 +116,6 @@
                 </div>
             </div>
         </div>        
-        <!-- CONTENT-WRAPPER SECTION END-->
         <footer>
             <div class="container">
                 <div class="row">
@@ -127,11 +126,8 @@
                 </div>
             </div>
         </footer>
-        <!-- FOOTER SECTION END-->
-        <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-        <!-- CORE JQUERY SCRIPTS -->
         <script src="js/jquery-1.11.1.js"></script>
-        <!-- BOOTSTRAP SCRIPTS  -->
         <script src="js/bootstrap.js"></script>
     </body>
 </html>
+-->

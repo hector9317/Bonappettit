@@ -5,9 +5,11 @@ import java.util.LinkedList;
 import org.neo4j.helpers.collection.MapUtil;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.aht.dao.counter.CounterDAOImpl;
+import com.aht.dao.utils.ApplicationContextWrapper;
 import com.aht.domain.Category;
 import com.aht.model.Counter;
 
@@ -15,12 +17,14 @@ public class CategoryDAOImpl implements CategoryDAO {
 	private Session session;
 	
 	public CategoryDAOImpl() {
-		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "n0m3l0s3");
+		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "burros93");
+		//this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "n0m3l0s3");
 	}
 	
 	public void create(Category category) {
 		CounterDAOImpl cdi = null;
-		cdi = (CounterDAOImpl) new ClassPathXmlApplicationContext("config.xml").getBean("counterDAO");
+		ApplicationContext applicationContext = ApplicationContextWrapper.getInstance();
+		cdi = (CounterDAOImpl) applicationContext.getBean("counterDAO");
 		Counter counter = cdi.retrieve();
 		category.setCategoryID(counter.getTotal());
 		session.save(category);
@@ -60,5 +64,9 @@ public class CategoryDAOImpl implements CategoryDAO {
 				exists = true;
 		}
 		return exists;
+	}
+	
+	public void getTipoComida() {
+		session.query("match (Category)", null);
 	}
 }

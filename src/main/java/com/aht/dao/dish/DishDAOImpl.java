@@ -16,15 +16,8 @@ public class DishDAOImpl implements DishDAO {
 	private Session session;
 	
 	public DishDAOImpl() {
-		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "n0m3l0s3");
+		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "burros93");
 	}
-	//given:
-	//  Dish dish
-	//when:
-	//  create(dish)
-	//then:
-	//  dish.id != null
-
 
 	public void create(Dish dish) {
 		CounterDAOImpl cdi = null;
@@ -65,7 +58,7 @@ public class DishDAOImpl implements DishDAO {
     }
 	
 	public Dish findByName(String name) {
-		Dish dish = session.queryForObject(Dish.class, "match (dish:Dish {name: {name}}) return dish", MapUtil.map("name",name));
+		Dish dish = session.queryForObject(Dish.class, "match (dish:Dish {name: {name}, }) return dish", MapUtil.map("name",name));
 		return dish;
 	}
 	

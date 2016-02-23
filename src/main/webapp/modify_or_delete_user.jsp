@@ -95,7 +95,7 @@
 											out.println("</td>");
 											
 											out.println("<td>");
-												out.println(dish.getIngredients().replace(" ", ", "));
+												out.println(dish.getDescription().replace(" ", ", "));
 											out.println("</td>");
 											
 											out.println("<td>");

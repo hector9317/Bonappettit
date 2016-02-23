@@ -37,7 +37,7 @@
 		dish = new Dish();
 	
 	dish.setName(name);
-	dish.setIngredients(ingredients);
+	dish.setDescription(ingredients);
 	Category category = null;
 	
 	for(int i = 0; i < categories.length; i++) {

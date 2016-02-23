@@ -32,6 +32,6 @@ public class Counter {
 
 	@Override
 	public String toString() {
-		return "Counter [id=" + id + ", total=" + total + "]";
+		return "id: " + id + " Total: " + total;
 	}
 }

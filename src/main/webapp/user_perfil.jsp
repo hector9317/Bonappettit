@@ -133,7 +133,7 @@
                 int numberOfRecommendations = 6;
                 Class.forName("org.neo4j.jdbc.Driver");
                 try {
-                    Connection con = Config.connectToNeo4j("neo4j","n0m3l0s3");
+                    Connection con = Config.connectToNeo4j("neo4j","burros93");
                     ItemRecommender ir = new ItemRecommender();
                     ResultSet rs = ir.getItemBasedRecommendations(ids, visualisations, numberOfRecommendations, con);
         %> 
