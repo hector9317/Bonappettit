@@ -2,111 +2,87 @@ package com.aht.domain;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+
+import com.aht.domain.relationship.Click;
+import com.aht.domain.relationship.Rate;
+import com.aht.domain.relationship.Upload;
 
 @NodeEntity
 public class Dish {
 	@GraphId
 	private Long id;
-	private int dishID;
 	private String name;
+	private String picture;
 	private String description;
-    private String picture;
-	@Relationship(type = "IS", direction = Relationship.OUTGOING)
-    private Set<Category> categories;
+	@Relationship(type = "IS")
+	private Set<Category> categories;
+	@Relationship(type = "RATED", direction = Relationship.INCOMING)
+	private Set<Rate> rates = new HashSet<Rate>();
+	@Relationship(type = "CLICKED", direction = Relationship.INCOMING)
+	private Set<Click> clicks = new HashSet<Click>();
+	@Relationship(type = "UPLOADED", direction = Relationship.INCOMING)
+	private Set<Upload> uploads = new HashSet<Upload>();
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public int getDishID() {
-        return dishID;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setDishID(int dishID) {
-        this.dishID = dishID;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getPicture() {
+		return picture;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public Set<Category> getCategories() {
-        return categories;
-    }
+	public Set<Category> getCategories() {
+		return categories;
+	}
 
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
+	}
 
-    public String getPicture() {
-        return this.picture;
-    }
-    
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
+	public Set<Rate> getRates() {
+		return rates;
+	}
 
-    public String getCategoriesNames() {
-    	String names = "";
-    	Set<Category> categories = this.getCategories();
-    	if(categories != null)
-    		for(Category category : categories)
-    			names += category.getName() + ",";
-    	return names;
-    }
+	public void setRates(Set<Rate> rates) {
+		this.rates = rates;
+	}
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        return result;
-    }
+	public Set<Click> getClicks() {
+		return clicks;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-                return true;
-        if (obj == null)
-                return false;
-        if (getClass() != obj.getClass())
-                return false;
-        Dish other = (Dish) obj;
-        if (name == null) {
-                if (other.name != null)
-                        return false;
-        } else if (!name.equals(other.name))
-                return false;
-        return true;
-    }
+	public void setClicks(Set<Click> clicks) {
+		this.clicks = clicks;
+	}
 
-    public void addCategories(Category category) {
-        if(categories == null) {
-            categories = new HashSet<Category>();
-            categories.add(category);
-        }
-        else if(!categories.contains(category))
-            categories.add(category);
-    }
+	public Set<Upload> getUploads() {
+		return uploads;
+	}
 
-    @Override
-    public String toString() {
-        return "id: " + id + " name: " + name + " description: " + description + " dishID: " + dishID;
-    }
+	public void setUploads(Set<Upload> uploads) {
+		this.uploads = uploads;
+	}
 }

@@ -1,7 +1,5 @@
 package com.aht.dao.user;
 
-import java.util.LinkedList;
-
 import org.neo4j.helpers.collection.MapUtil;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
@@ -10,18 +8,39 @@ import com.aht.domain.User;
 
 public class UserDAOImpl implements UserDAO {
 	private Session session;
-	
+
 	public UserDAOImpl() {
 		this.session = new SessionFactory("com.aht.domain").openSession("http://localhost:7474", "neo4j", "burros93");
 	}
 
-	@Override
-	public LinkedList<User> retrieveAll() {
-		LinkedList<User> users = null;
-		users = new LinkedList<User>(session.loadAll(User.class));
-		return users;
+	public void create(User user) {
+		session.save(user);
 	}
 
+	public User retrieve(long id) {
+		return session.load(User.class, id);
+	}
+
+	public void update(User user) {
+		session.save(user, user.getId().intValue());
+	}
+
+	public void delete(User user) {
+		session.delete(user);
+	}
+
+	public User findByUsername(String username) {
+		return (User) session.queryForObject(User.class, "match (user:User {username: {username}}) return user", MapUtil.map("username", username));
+	}
+	
+	public User findByEmail(String email) {
+		return (User) session.queryForObject(User.class, "match (user:User {email: {email}}) return user", MapUtil.map("email", email));
+	}
+}
+
+/*
+	
+	/*
 	@Override
 	public void create(User user) {
 		session.save(user);
@@ -29,14 +48,14 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User retrieve(long id) {
-		User user = null;
+		User user = new User();
 		user = session.load(User.class, id);
 		return user;
 	}
 
 	@Override
 	public void update(User user) {
-		session.save(user, user.getId().intValue());
+		session.save(User.class, user.getId().intValue());
 	}
 
 	@Override
@@ -45,22 +64,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User exists(String username, String email) {
-		User user = null;
-		user = session.queryForObject(User.class, "match( user: User {username: {username}, email: {email}}) return dish", MapUtil.map("username", username, "email", email));
-		return user;
+	public boolean exists(String username, String email) {
+		return false;
 	}
-
-	@Override
-	public void findByUsername(String username) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void findByEmail(String email) {
-		// TODO Auto-generated method stub
-		
-	}
-
-}
+*/
